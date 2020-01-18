@@ -142,7 +142,8 @@ body{
 }
 
 
-/* navbar style end 
+/* navbar style and 
+*/
 
 .full-page{
     position: relative;
@@ -178,7 +179,6 @@ body{
         z-index: 2;
         background: rgba(0, 0, 0, 0.7);
 }
-*/
 /*main content style start */
 .container-wrap{
     padding-bottom: 50px;
@@ -265,6 +265,7 @@ th:first-child, td:first-child{
 
 
 /* login-form id style  start
+*/
 
 #login-form .input-group, #announce-form .input-group, #reset-form .input-group{
     padding:0 0 25px;
@@ -300,10 +301,10 @@ th:first-child, td:first-child{
     color:#00b386;
     text-decoration: none;
 }
-*/
 /* login-form style end*/
 
-/* signup-form style start */
+/* signup-form style start 
+*/
 #signup-form .input-group{
     padding:0 0 25px;
 }
@@ -350,6 +351,7 @@ th:first-child, td:first-child{
 
 @media screen and (max-width:768px){
     /*
+    */
     .full-page{
         position: relative;
         flex:1 1 100%;
@@ -380,7 +382,6 @@ th:first-child, td:first-child{
             z-index: 2;
             background: rgba(0, 0, 0, 0.7);
     }
-    */
     #login-form, #signup-form, #reset-form{
         margin:0 auto 0;
         width: 400px;
