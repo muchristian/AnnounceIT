@@ -10,12 +10,10 @@ body{
     height: 100%;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
-/*
 .container{
     margin: 0 auto;
     max-width: 1150px;
 }
-*/
     
 
 /* navbar style start */
@@ -657,7 +655,7 @@ font-size: 12px;
     }
 }
 /*homepage style end */
-/* col-full style start
+/* col-full style start*/
 .col-full {
     flex: 1 1 70%;
 }
@@ -751,10 +749,9 @@ cursor: pointer;
      width:100%;
     }
 }
-*/
 /* col-full style end*/
 
-/* col-admin style start
+/* col-admin style start*/
 .col-admin{
     flex:1 1 100%;
 }
@@ -878,7 +875,6 @@ cursor: pointer;
 .blacklist-users, .view-announce-admin{
     display: none;
 }
-*/
 /*col-admin style end*/
 .active{
     display: block;
