@@ -50,6 +50,7 @@ if (target.classList.contains('modal')) {
       tab_link[i].addEventListener('click', change, false);
     }
 
+    if(form){
       form.addEventListener('submit', function(evt){
         evt.preventDefault();
         if(email.value == 'admin@mail.com'){
@@ -60,14 +61,20 @@ if (target.classList.contains('modal')) {
           location.replace('#');
         }
       });
+    }
+      
     
-
-latest_toggle.addEventListener('click', () =>{
+if(latest_toggle){
+  latest_toggle.addEventListener('click', () =>{
     document.querySelector('.col2').style.width="100%";
 });
-latest_close.addEventListener('click', () =>{
-document.querySelector('.col2').style.width="0";
-});
+}
+if(latest_toggle){
+  latest_close.addEventListener('click', () =>{
+    document.querySelector('.col2').style.width="0";
+    });
+}
+
 
 
 

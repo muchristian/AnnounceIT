@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <meta name="description" content="announcement online">
+            <meta name="keywords" content="HTML,CSS,JavaScript">
+            <meta name="author" content="Mucyo Christian">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            AnnounceIT
+        </title>
+        <link href="../css/style.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/3d6f968a21.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="navbar">
+                <span class="navbar-toggle" id="js_navbar_toggle">
+                        <i class="fas fa-bars"></i>
+                    </span>
+            <a href="#" class="nav-logo">ait</a>
+            <ul class="navbar-menu" id="js_menu">
+                <li>
+                    <a href="login.html" class="nav-link">logout</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main container">
+            <div class="container-wrap">
+            <div class="col1">
+                <div class="profile-div">
+                    <div class="overlay"></div>
+                    <div class="profile-credential">
+                        <div class="profile-basic">
+                                <div class="profile">
+                                        <span>
+                                                <script>
+                                                        let fname = "Mucyo";
+                                                        let lname = "Christian";
+                                                        document.write(`${fname.charAt(0)}${lname.charAt(0)}`);
+                                                        </script>
+                                        </span>
+                                    </div>
+                                    <p>Mucyo Christian</p>
+                        </div>
+                            
+                                <div class="status">
+                                    <span class="user-status">advertiser</span>
+                                    <span class="announce-nber">23 announces</span>
+                                    <a href="view.html" class="view-more">view more</a>
+                                </div>
+                    </div>
+                    <span class="latest-toggle" id="js-latest-toggle">
+                            <i class="fas fa-bars"></i>
+                            <!--<i class="fas fa-bars"></i>-->
+                        </span>
+                </div>
+                <div class="post-announce-div">
+                    <h2>post announcement</h2>
+                    <form id="announce-form">
+                            <div class="input-group">
+                                    <p class="label">announcement</p>
+                                    <textarea cols="10" rows="6" placeholder="announcement..." name="announcement"></textarea>
+                                    
+                                </div>
+                                <button type="submit">submit</button>
+                    </form>
+                    
+                </div>
+            </div>
+            <div class="col2">
+                <div class="latest-title">
+                        <h5>latest announcement</h5>
+                        <span class="latest-close" id="js-latest-close">
+                                <i class="fas fa-times"></i>
+                            </span>
+                </div>
+                    
+                    <hr>
+                    
+                <div class="latest-announce">
+                    <div class="item">
+                        <div class="profile">
+                            <span>
+                                <script>
+                                let fname1 = "Mucyo";
+                                let lname1 = "Christian";
+                                document.write(`${fname1.charAt(0)}${lname1.charAt(0)}`);
+                                </script>
+                                </span>
+                        </div>
+                        <div class="description">
+                            <div id="description-text">
+                                    <p><script>
+                                    let text = "the start and end parameters to specify the part of the string you.";
+                                    document.write(`${text.slice(0, 70)}`);
+                                    </script> </p>
+                            </div>
+                            <div class="description-action">
+                                    <em>active</em>
+                                    <span data-target="update-modal"  data-toggle="modal" class="edit">edit</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div id="more-announce">
+                        <a href="view.html#view-announce-id" ><span>read more</span> <i class="far fa-plus-square"></i></a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+            <footer>
+                <span>AnnounceIT &copy; <script>document.write(new Date().getFullYear());</script></span>
+            </footer>
+        </div>
+        
+        <div class="modal" id="update-modal">
+        <div class="update-announce-modal">
+            <p>update announcement</p>
+            <hr>
+            <div class="update-content">
+                <form id="update-announce-form">
+                    <div class="input-group">
+                            <p class="label">announcement</p>
+                            <textarea cols="10" rows="6" placeholder="announcement..." name="announcement"></textarea>
+                            
+                        </div>
+                        <div class="input-group">
+                            <p class="label">selete state</p>
+                            <select>
+                                <option>update state</option>
+                                <option>accepted</option>
+                                <option>declined</option>
+                                <option>active</option>
+                                <option>diactivated</option>
+                            </select>
+                        </div>
+                        <button type="submit">submit</button>
+            </form>
+            </div>
+            
+        </div>
+           </div>
+        
+    </body>
+<script src="../js/main.js"></script>
+</html>
