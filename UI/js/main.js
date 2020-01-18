@@ -57,7 +57,7 @@ if (target.classList.contains('modal')) {
         }else if(email.value == 'advertiser@mail.com'){
           location.replace('user_advertiser.html');
         }else{
-          location.replace('login.html');
+          location.replace('#');
         }
       });
     
