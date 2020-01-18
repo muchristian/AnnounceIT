@@ -146,7 +146,7 @@ body{
 .full-page{
     position: relative;
     flex:1 1 100%;
-    background-image: url("announceit.jpg");
+    background-image: url("../assets/announceit.jpg");
     background-repeat: no-repeat;
     background-size: 100% 600px;
     height:600px;
@@ -348,7 +348,7 @@ th:first-child, td:first-child{
     .full-page{
         position: relative;
         flex:1 1 100%;
-        background-image: url("announceit.jpg");
+        background-image: url("../assets/announceit.jpg");
         background-repeat: no-repeat;
         background-size: 100% 350px;
         height:350px;
@@ -381,7 +381,7 @@ th:first-child, td:first-child{
     }
     .container-wrap .page-intro{
         flex:1 1 100%;
-        background-image: url("announceit.jpg");
+        background-image: url("../assets/announceit.jpg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% auto;
@@ -408,7 +408,7 @@ th:first-child, td:first-child{
 .container-wrap .page-intro{
         position: relative;
         flex:1 1 60%;
-        background-image: url("announceit.jpg");
+        background-image: url("../assets/announceit.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         display: flex;
@@ -431,7 +431,7 @@ th:first-child, td:first-child{
 }
 .profile-div{
     position: relative;
-    background-image: url("announceit.jpg");
+    background-image: url("../assets/announceit.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

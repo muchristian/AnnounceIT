@@ -9,7 +9,15 @@
         <title>
             AnnounceIT
         </title>
-        <link href="assets/style.css" rel="stylesheet" />
+        <link href="../css/style.css" rel="stylesheet" />
+        <style>
+            @media screen and (min-width:768px){
+                .main .page-form{
+                    height:500px;
+                }
+            }
+            
+        </style>
         <script src="https://kit.fontawesome.com/3d6f968a21.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -29,44 +37,31 @@
         </div>
         <div class="main">
             <div class="container-wrap">
-                <div class="page-intro">
+            <div class="page-intro">
                     <div class="overlay"></div>
-                    <h2>signup<br><span>AnnounceIT</span></h2>
+                    <h2>login<br><span>AnnounceIT</span></h2>
             </div>
-            <div class="page-form">
-                <h2>signup</h2>
+            <div class="page-form" style="height:600px;">
+                <h2>login</h2>
 
-                <p class="description">on this page you will be able to make registration on this page..</p>
+                <p class="description">on this page you will be able to make authentication on this page..</p>
                 <hr width="60%">
-                <form id="signup-form">
-                    <div class="input-group-name">
-                            <div class="input-group">
-                                    <p class="label">firstname</p>
-                                    <input type="text" name="firstname" placeholder="firstname">
-                                </div>
-                                <div class="input-group">
-                                        <p class="label">lastname</p>
-                                        <input type="text" name="lastname" placeholder="lastname">
-                                    </div>
-                    </div>
+                <form id="login-form">
                     <div class="input-group">
                         <p class="label">email</p>
-                        <input type="email" name="email" placeholder="email">
+                        <input type="email" name="email" id="email" value="advertiser@mail.com" placeholder="email">
                     </div>
                     <div class="input-group">
                         <p class="label">password</p>
-                        <input type="password" name="password" placeholder="password">
+                        <input type="password" name="password" value="password" placeholder="password"><br>
+                        <a href="reset-password.html" class="reset">reset password!</a>
                     </div>
-                    <div class="input-group">
-                            <p class="label">address</p>
-                            <input type="text" name="address" placeholder="address">
-                        </div>
 
-                    <button type="submit" name="submit">signup</button>
+                    <button type="submit" name="submit">signin</button>
+                    <span class="signup-link">or <a href="signup.html"><em>signup!</em></a></span>
                 </form>
             </div>
-            </div>
-            
+        </div>
             <footer>
                 <span>AnnounceIT &copy; <script>document.write(new Date().getFullYear());</script></span>
             </footer>
@@ -74,7 +69,6 @@
         
             
         
-        
     </body>
-<script src="assets/main.js"></script>
+<script src="../js/main.js"></script>
 </html>
