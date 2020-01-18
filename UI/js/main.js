@@ -3,16 +3,16 @@
 const menu = document.querySelector('#js_menu');
 const nav_toggle = document.querySelector('#js_navbar_toggle');
 const navbar = document.querySelector('.navbar');
-const latest_toggle = document.querySelector('#js-latest-toggle');
+/*const latest_toggle = document.querySelector('#js-latest-toggle');
 const latest_close = document.querySelector('#js-latest-close');
 let tab_link = document.querySelectorAll('.tab-link');
 let email = document.querySelector('#login-form #email');
-let form = document.querySelector('#login-form');
+let form = document.querySelector('#login-form');*/
 
 nav_toggle.addEventListener('click', () => {
     menu.classList.toggle('active');
 });
-
+/*
 document.addEventListener('click', function (e) {
   e = e || window.event;
   let target = e.target || e.srcElement;
@@ -68,7 +68,7 @@ latest_toggle.addEventListener('click', () =>{
 latest_close.addEventListener('click', () =>{
 document.querySelector('.col2').style.width="0";
 });
-
+*/
 
 
 
