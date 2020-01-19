@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <meta name="description" content="announcement online">
+            <meta name="keywords" content="HTML,CSS,JavaScript">
+            <meta name="author" content="Mucyo Christian">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            AnnounceIT
+        </title>
+        <link href="../css/style.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/3d6f968a21.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="navbar">
+                <span class="navbar-toggle" id="js_navbar_toggle">
+                        <i class="fas fa-bars"></i>
+                    </span>
+            <a href="#" class="nav-logo">ait</a>
+            <ul class="navbar-menu" id="js_menu">
+                <li>
+                    <a data-tab="view-announce" class="nav-link tab-link active">view all</a>    
+                </li>
+                <li>
+                    <a data-tab="blacklist-user" class="nav-link tab-link">blacklist</a>
+                </li>
+                <li>
+                    <a href="login.html" class="nav-link">logout</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main container">
+            
+                <div class="container-wrap">
+                    <div class="col-admin">
+                    <div class="profile-div">
+                        <div class="overlay"></div>
+                        <div class="profile-credential">
+                            <div class="profile-basic">
+                                    <div class="profile">
+                                            <span>
+                                                    <script>
+                                                            let fname = "Mucyo";
+                                                            let lname = "Christian";
+                                                            document.write(`${fname.charAt(0)}${lname.charAt(0)}`);
+                                                            </script>
+                                            </span>
+                                        </div>
+                                        <p>Mucyo Christian</p>
+                            </div>
+                                
+                                    <div class="status">
+                                        <span class="user-status">admin</span>
+                                        <span class="announce-nber">7 announces</span>
+                                        <a href="#view-announce" class="view-more">view more announces</a>
+                                    </div>
+                        </div>
+                        
+                    </div>
+                    <div class="view-announce-admin active" id="view-announce">
+                        <div class="title-action">
+                            <a href="#" class="create-btn">create announce</a>
+                            <select>
+                                <option>select by states</option>
+                            </select>
+                        </div>
+                        <div class="div-table">
+                            <table>
+                                <tr class="table-header">
+                                    <th style="width: 35%;">announcement</th>
+                                    <th style="width: 20%;">status</th>
+                                    <th style="width: 30%;">created_date</th>
+                                    <th style="width: 15%;">action</th>
+                                </tr>
+                                <tr class="table-content">
+                                    <td>well done</td>
+                                    <td>active</td>
+                                    <td><script>document.write(`${new Date().getMonth()}/ ${new Date().getDay()}/ ${new Date().getFullYear()}`);</script></td>
+                                    <td class="action">
+                                        <a href="#" data-target="view-modal" data-toggle="modal" class="btn" id="btn-view">view</a>
+                                        <a href="#" data-target="update-modal" data-toggle="modal" class="btn btn-update" id="btn-update">update</a>
+                                        <a href="#" data-target="delete-modal" data-toggle="modal" class="btn btn-delete" id="btn-delete">delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="table-content">
+                                    <td>well done</td>
+                                    <td>active</td>
+                                    <td><script>document.write(`${new Date().getMonth()}/ ${new Date().getDay()}/ ${new Date().getFullYear()}`);</script></td>
+                                    <td class="action">
+                                        <a href="#" data-target="view-modal" data-toggle="modal" class="btn" id="btn-view">view</a>
+                                        <a href="#" data-target="update-modal" data-toggle="modal" class="btn btn-update" id="btn-update">update</a>
+                                        <a href="#" data-target="delete-modal" data-toggle="modal" class="btn btn-delete" id="btn-delete">delete</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        
+                </div>
+                <div class="blacklist-users" id="blacklist-user">
+                    <div class="div-table">
+                        <input type="text" class="search-user" placeholder="search users"/>
+                        <table>
+                            <tr class="table-header">
+                                <th style="width: 35%;">firstname</th>
+                                <th style="width: 20%;">lastname</th>
+                                <th style="width: 37%;">email</th>
+                                <th style="width: 13%;">action</th>
+                            </tr>
+                            <tr class="table-content">
+                                <td>mucyo</td>
+                                <td>christian</td>
+                                <td>mucyochristian2@gmail.com</td>
+                                <td class="action">
+                                    <input type="checkbox" class="user-check"/>
+                                </td>
+                            </tr>
+                            <tr class="table-content">
+                                <td>mark</td>
+                                <td>joker</td>
+                                <td>markjoker73@gmail.com</td>
+                                <td class="action">
+                                    <input type="checkbox" class="user-check"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+            <footer>
+                <span>AnnounceIT &copy; <script>document.write(new Date().getFullYear());</script></span>
+            </footer>
+            
+            </div>
+            <div class="modal" id="view-modal">
+                <div class="view-announce-modal">
+                    <p>view announcement</p>
+                    <hr>
+                    <div class="view-content">
+                        <p>the start and end parameters to specify the part of the string you 
+                            the start and end parameters to specify the part of the string you the part of the string you </p>
+                        <div class="status">
+                            <span>christian</span>
+                            <span><em>active</em></span>
+                            <span><em><script>document.write(`${new Date().getMonth()}/ ${new Date().getDay()}/ ${new Date().getFullYear()}`);</script></em></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal" id="update-modal">
+                <div class="update-announce-modal">
+                    <p>update announcement</p>
+                    <hr>
+                    <div class="update-content">
+                        <form id="update-announce-form">
+                            <div class="input-group">
+                                    <p class="label">announcement</p>
+                                    <textarea cols="10" rows="6" placeholder="announcement..." name="announcement"></textarea>
+                                    
+                                </div>
+                                <div class="input-group">
+                                    <p class="label">selete state</p>
+                                    <select>
+                                        <option>update state</option>
+                                        <option>accepted</option>
+                                        <option>declined</option>
+                                        <option>active</option>
+                                        <option>diactivated</option>
+                                    </select>
+                                </div>
+                                <button type="submit">submit</button>
+                    </form>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal" id="delete-modal">
+                <div class="delete-announce-modal">
+                    <p>delete announcement</p>
+                    <hr>
+                    <div class="delete-content">
+                        <p>are you sure you want to delete!</p>
+                    <div class="delete-choice">
+                        <button>yes</button>
+                        <button>no</button>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+                
+        
+    </body>
+<script src="../js/main.js"></script>
+</html>
