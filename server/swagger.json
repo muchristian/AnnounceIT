@@ -1,0 +1,45 @@
+{
+    "info": {
+      "title": "AnnounceIT",
+      "version": "1.0.0",
+      "description": "announcing online platform"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "swagger": "2.0",
+    "tags": [
+        {
+          "name": "signup",
+          "description": "API for the signup in the application"
+        }
+      ],
+      "schemes": ["http"],
+  "produces": ["application/json"],
+    "paths": { 
+        "auth/signup": {
+            "post": {
+              "tags": ["signup"],
+              "description": "Create new user in system",
+              "parameters": [
+                {
+                  "name": "signup",
+                  "in": "body",
+                  "description": "new user that we want to create",
+                  "schema": {
+                    "$ref": "#/definitions/users"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "New user is created",
+                  "schema": {
+                    "$ref": "#/definitions/users"
+                  }
+                }
+              }
+            }
+          }
+    }
+  }
