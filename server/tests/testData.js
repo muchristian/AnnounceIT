@@ -17,4 +17,14 @@ const userSignup2 = {
     is_admin:false
 };
 
-export {userSignup1, userSignup2};
+const userSignin1 = {
+    email:'markchris2@gmail.com',
+    password:'mark32'
+};
+
+const userSignin2 = {
+    email:'markjoe@gmail.com',
+    password:'mark32'
+}
+
+export {userSignup1, userSignup2, userSignin1, userSignin2};
