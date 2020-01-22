@@ -1,0 +1,45 @@
+{
+  "name": "announce2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server",
+  "scripts": {
+    "lint": "eslint ./server",
+    "test": "nyc mocha --require @babel/register ./server/tests/**/*.test.js  --timeout 25000 --exit ",
+    "build": "babel-node ./server",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "start": "nodemon --exec npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/node": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.9",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "mocha": "^7.0.0",
+    "nyc": "^15.0.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "@hapi/joi": "^17.0.2",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "swagger-ui-express": "^4.1.3"
+  }
+}
