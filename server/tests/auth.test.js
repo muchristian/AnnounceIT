@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../index';
-import {userSignup1, userSignup2} from './testData';
+import {userSignup1, userSignup2, userSignin1, userSignin2} from './testData';
 
 chai.use(chaiHttp);
 chai.should();
@@ -39,5 +39,28 @@ describe('test signup', () => {
             done(); 
         });
     });
+});
+
+describe('test authentication', () => {
+it('should return 200 if the authentication is passed', (done) => {
+chai
+.request(server)
+.post('/api/v1/auth/signin')
+.send(userSignin1)
+.end((err, res) => {
+res.should.have.status(200);
+done();
+});
+});
+it('should return 400 if the user doesnt exist', (done) => {
+    chai
+    .request(server)
+    .post('/api/v1/auth/signin')
+    .send(userSignin2)
+    .end((err, res) => {
+        res.should.have.status(400);
+        done();
+    });
+})
 });
 

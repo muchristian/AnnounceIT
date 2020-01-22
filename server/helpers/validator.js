@@ -4,21 +4,17 @@ const validateUser = user => {
     const schema = Joi.object({
         first_name: Joi.string()
         .min(3)
-        .regex(/^[a-zA-Z ]/)
         .required(),
         last_name: Joi.string()
         .min(3)
-        .regex(/^[a-zA-Z ]/),
+        .required(),
         email: Joi.string()
-        .regex(
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )
+        .email()
         .required(),
         password: Joi.string()
-        .regex(/^[a-zA-Z0-9]/)
+        .min(4)
         .required(),
         phoneNumber: Joi.string()
-        .regex(/^[0-9]{10}/)
         .required(),
         address: Joi.string()
         .min(3)
@@ -27,6 +23,7 @@ const validateUser = user => {
     });
     return schema.validate(user);
 };
+
 
 
 
