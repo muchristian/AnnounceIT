@@ -195,7 +195,7 @@ describe('test GET announcement', () => {
         .delete('/api/v1/announcement/' + 1)
         .set('auth-token', userToken)
         .end((err, res) => {
-            res.should.have.status(200)
+            res.should.have.status(200);
             done();
         });
     });
@@ -206,7 +206,32 @@ describe('test GET announcement', () => {
         .delete('/api/v1/announcement/' + 0)
         .set('auth-token', userToken)
         .end((err, res) => {
-            res.should.have.status(400)
+            res.should.have.status(400);
+            done();
+        });
+    });
+
+
+    it('should return 200 if id provided to be updated as status match', done => {
+        chai
+        .request(server)
+        .put('/api/v1/announcement/'+2+'/sold')
+        .send({
+            status:'active'
+        })
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+    it('should return 400 if id provided to be updated as status doesnt match', done => {
+        chai
+        .request(server)
+        .put('/api/v1/announcement/'+0+'/sold')
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(400);
             done();
         });
     });
