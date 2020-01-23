@@ -64,4 +64,23 @@ const viewAllAnnouncebyOwner = (req, res) => {
         });
     }
 };
-export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner }
+
+const  viewAnnouncementById = (req, res) => {
+    try{
+        const announce = announces.find(a => a.id == parseInt(req.params.id));
+        if(!announce){
+            throw 'the provided announcement id doesnt exist';
+        }
+        return res.status(200).json({
+            status:'success',
+            data:announce
+        })
+    }catch(error){
+        return res.status(400).json({
+            status:'error',
+            error:error
+        });
+    }
+};
+
+export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById }
