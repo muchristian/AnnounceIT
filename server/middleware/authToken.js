@@ -4,7 +4,10 @@ import key from '../config/constants';
 const userVerify = async (req, res, next) => {
     const token  = req.header('auth-token');
     if(!token){
-        return res.status(401).send("access denied please!");
+        return res.status(401).json({
+            status:'error',
+            message:'access denied please'
+        });
     }
 
     try{
@@ -13,7 +16,10 @@ const userVerify = async (req, res, next) => {
         return next();
     }
     catch(err){
-        return res.status(403).send("forbidden");
+        return res.status(403).json({
+            status:'error',
+            message:'forbidden'
+        });
     }
 
 }

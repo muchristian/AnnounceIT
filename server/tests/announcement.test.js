@@ -188,4 +188,26 @@ describe('test GET announcement', () => {
             done();
         });
     });
+
+    it('should return 200 if id provided to be deleted pass', done => {
+        chai
+        .request(server)
+        .delete('/api/v1/announcement/' + 1)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(200)
+            done();
+        });
+    });
+
+    it('should return 400 if id provided to be deleted doesnt match', done => {
+        chai
+        .request(server)
+        .delete('/api/v1/announcement/' + 0)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(400)
+            done();
+        });
+    });
 });
