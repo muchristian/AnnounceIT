@@ -104,4 +104,29 @@ const deleteAnnouncement = (req, res) => {
     }
 }
 
-export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById, deleteAnnouncement }
+const updateAnnounceStatus = (req, res) => {
+    try{
+        const announce = announces.find(a => a.id == parseInt(req.params.id));
+        if(!announce){
+            throw 'the announcement u want to update doesnt exist';
+        }
+        announce.status = req.body.status;
+        announce.end_date = new Date();
+        return res.status(200).json({
+            status:'success',
+            data: {
+                id: announce.id,
+                text: announce.status,
+                end_date:announce.end_date
+            }
+        });
+    } catch(error) {
+        return res.status(400).json({
+            status:'error',
+            error:error
+        });
+    };
+    
+};
+
+export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById, deleteAnnouncement, updateAnnounceStatus}
