@@ -128,4 +128,42 @@ describe('test announcement update', () => {
             done();
             });
     });
-})
+});
+
+
+describe('test GET announcement', () => {
+    let userToken = '';
+	before('check if user auth token available', (done) => {
+		chai
+		.request(server)
+		.post('/api/v1/auth/signin')
+		.send(userSignin3)
+		.end((err, res) => {
+			userToken = res.body.data.token;
+			res.should.have.status(200);
+			done();
+		});
+    });
+
+    it('should return 200 if all his/her announcement are outputed', (done) => {
+        chai
+        .request(server)
+        .get('/api/v1/announcement/' + 1)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+
+    it('should return 400 if his/her id doesnot exist', (done) => {
+        chai
+        .request(server)
+        .get('/api/v1/announcement/' + 0)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(400);
+            done();
+        });
+    });
+});
