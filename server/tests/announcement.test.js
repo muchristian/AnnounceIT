@@ -235,4 +235,15 @@ describe('test GET announcement', () => {
             done();
         });
     });
+
+    it('should return 200 if returning all announcement from user', done => {
+        chai
+        .request(server)
+        .get('/api/v1/announcement')
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
 });
