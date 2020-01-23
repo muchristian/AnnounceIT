@@ -83,4 +83,25 @@ const  viewAnnouncementById = (req, res) => {
     }
 };
 
-export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById }
+const deleteAnnouncement = (req, res) => {
+    try{
+        const announce = announces.find(a => a.id == parseInt(req.params.id));
+        if(!announce){
+            throw 'the provided announcement id doesnt exist';
+        }
+        const index = announces.indexOf(announce);
+    announces.splice(index, 1);
+        return res.status(200).json({
+            status:'success',
+            data:announce
+        })
+        
+    }catch(error){
+        return res.status(400).json({
+            status:'error',
+            error:error
+        });
+    }
+}
+
+export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById, deleteAnnouncement }
