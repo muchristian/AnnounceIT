@@ -39,8 +39,29 @@ const updateAnnounce = (req, res) => {
             status:'error',
             error:error
         });
-    }
+    };
     
-}
+};
 
-export { createAnnounce, updateAnnounce }
+const viewAllAnnouncebyOwner = (req, res) => {
+    try{
+        const announce = announces.filter(a => a.owner == parseInt(req.params.owner));
+
+        const checkOwner = announces.find(a => a.owner == parseInt(req.params.owner));
+        if(!checkOwner){
+            throw 'the user with that id doesnt exist';
+        }
+
+        return res.status(200).json({
+            status:'success',
+            data:announce
+        });
+
+    } catch(error){
+        return res.status(400).json({
+            status:'error',
+            error:error
+        });
+    }
+};
+export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner }
