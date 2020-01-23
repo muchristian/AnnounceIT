@@ -166,4 +166,26 @@ describe('test GET announcement', () => {
             done();
         });
     });
+
+    it('should return 200 if provided id to view announcement pass', done => {
+        chai
+        .request(server)
+        .get('/api/v1/announcement-id/' + 1)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+
+    it('should return 400 if provided id to view announcement does not pass', done => {
+        chai
+        .request(server)
+        .get('/api/v1/announcement-id/' + 0)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(400);
+            done();
+        });
+    });
 });
