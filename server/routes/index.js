@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import authRouter from './auth';
+import announceRouter from './announcement';
 import api from '../config/constants';
+
 
 export default server => {
 
@@ -11,7 +13,7 @@ export default server => {
         res.status(200).json({status:'success', message:'welcome'});
     });
 
-    routes.use(entryPoint, authRouter);
+    routes.use(entryPoint, authRouter, announceRouter);
     server.use(api.PROXY, routes);
 };
 

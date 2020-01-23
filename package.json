@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./server",
     "test": "nyc mocha --require @babel/register ./server/tests/**/*.test.js  --timeout 25000 --exit ",
-    "build": "babel-node ./server",
+    "build": "babel-node  --require dotenv/config ./server",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon --exec npm run build"
   },

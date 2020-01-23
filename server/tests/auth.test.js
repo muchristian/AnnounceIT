@@ -41,7 +41,7 @@ describe('test signup', () => {
     });
 });
 
-describe('test authentication', () => {
+describe('test signin', () => {
 it('should return 200 if the authentication is passed', (done) => {
 chai
 .request(server)

@@ -24,7 +24,16 @@ const validateUser = user => {
     return schema.validate(user);
 };
 
+const validateAnnounce = announce => {
+    const schema = Joi.object({
+        text: Joi.string()
+        .min(6)
+        .max(250)
+        .required()
+    });
+    return schema.validate(announce);
+};
 
 
 
-export { validateUser };
+export { validateUser, validateAnnounce };
