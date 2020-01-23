@@ -18,7 +18,7 @@ describe('test register', () => {
         });
     });
 });
-describe('test announcement', () => {
+describe('test create announcement', () => {
     let userToken = '';
 	before('check if user auth token available', (done) => {
 		chai
@@ -87,3 +87,45 @@ describe('test announcement', () => {
     });
 
 });
+
+describe('test announcement update', () => {
+    let userToken = '';
+	before('check if user auth token available', (done) => {
+		chai
+		.request(server)
+		.post('/api/v1/auth/signin')
+		.send(userSignin3)
+		.end((err, res) => {
+			userToken = res.body.data.token;
+			res.should.have.status(200);
+			done();
+		});
+    });
+    it('update announcement', function(done) {
+        chai
+        .request(server)
+        .put('/api/v1/announcement/' + 1)
+        .send({
+                text: 'announcement new update'
+           })
+        .set('auth-token', userToken)
+        .end(function(err, res) {
+            res.should.have.status(200);
+            done();
+            });
+    });
+
+    it('update announcement', function(done) {
+        chai
+        .request(server)
+        .put('/api/v1/announcement/' + 0)
+        .send({
+                text: 'announcement new update'
+           })
+        .set('auth-token', userToken)
+        .end(function(err, res) {
+            res.should.have.status(400);
+            done();
+            });
+    });
+})
