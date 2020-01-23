@@ -129,4 +129,11 @@ const updateAnnounceStatus = (req, res) => {
     
 };
 
-export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById, deleteAnnouncement, updateAnnounceStatus}
+const viewAllAnnounces = (req, res) => {
+    return res.status(200).json({
+        status:'success',
+        data: announces
+    });
+};
+
+export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById, deleteAnnouncement, updateAnnounceStatus, viewAllAnnounces}
