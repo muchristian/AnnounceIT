@@ -27,6 +27,16 @@ const userSignup3 = {
     is_admin:false
 };
 
+const userSignup4 = {
+    first_name:'Mark',
+    last_name:'Chris',
+    email:'markadmin23@gmail.com',
+    password:'admin23',
+    phoneNumber:'0782728660',
+    address:'kigali',
+    is_admin:true
+};
+
 const userSignin1 = {
     email:'markchris2@gmail.com',
     password:'mark32'
@@ -41,9 +51,13 @@ const userSignin3 = {
     email:'markchris23@gmail.com',
     password:'mark23'
 }
+const userSignin4 = {
+    email:'markadmin23@gmail.com',
+    password:'admin23'
+}
 
 const announceTest = {
     text:'example when running an install in an automated test environment'
 }
 
-export {userSignup1, userSignup2, userSignup3, userSignin1, userSignin2, userSignin3, announceTest};
+export {userSignup1, userSignup2, userSignup3, userSignup4, userSignin1, userSignin2, userSignin3, userSignin4, announceTest};

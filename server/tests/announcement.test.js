@@ -1,17 +1,27 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../index';
-import {userSignup3, userSignin3, announceTest} from './testData';
+import {userSignup3, userSignin3, announceTest, userSignin4, userSignup4} from './testData';
 
 chai.use(chaiHttp);
 chai.should();
 
 describe('test register', () => {
-    it('should return 200 if the registration passed', (done) =>{
+    it('should return 200 if the user advertiser registration passed', (done) =>{
         chai
         .request(server)
         .post('/api/v1/auth/signup')
         .send(userSignup3)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+    it('should return 200 if the user admin registration passed', (done) =>{
+        chai
+        .request(server)
+        .post('/api/v1/auth/signup')
+        .send(userSignup4)
         .end((err, res) => {
             res.should.have.status(200);
             done();
@@ -189,11 +199,63 @@ describe('test GET announcement', () => {
         });
     });
 
+
+
+    it('should return announcement for specific state', done => {
+        chai
+        .request(server)
+        .get(`/api/v1/announcement/${2}?status=pending`)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+
+    
+    it('should return 403 if credential does not match as for admin', (done) => {
+        chai
+        .request(server)
+        .get('/api/v1/announcement')
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(403);
+            done();
+        });
+    });
+    
+});
+
+describe('user admin announcement test', () => {
+    let adminToken = '';
+	before('check if user auth token available', (done) => {
+		chai
+		.request(server)
+		.post('/api/v1/auth/signin')
+		.send(userSignin4)
+		.end((err, res) => {
+			adminToken = res.body.data.token;
+			res.should.have.status(200);
+			done();
+		});
+    });
+
+    it('should return 200 if returning all announcement from user', done => {
+        chai
+        .request(server)
+        .get('/api/v1/announcement')
+        .set('auth-token', adminToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+
     it('should return 200 if id provided to be deleted pass', done => {
         chai
         .request(server)
         .delete('/api/v1/announcement/' + 1)
-        .set('auth-token', userToken)
+        .set('auth-token', adminToken)
         .end((err, res) => {
             res.should.have.status(200);
             done();
@@ -204,7 +266,7 @@ describe('test GET announcement', () => {
         chai
         .request(server)
         .delete('/api/v1/announcement/' + 0)
-        .set('auth-token', userToken)
+        .set('auth-token', adminToken)
         .end((err, res) => {
             res.should.have.status(400);
             done();
@@ -219,7 +281,7 @@ describe('test GET announcement', () => {
         .send({
             status:'active'
         })
-        .set('auth-token', userToken)
+        .set('auth-token', adminToken)
         .end((err, res) => {
             res.should.have.status(200);
             done();
@@ -229,33 +291,10 @@ describe('test GET announcement', () => {
         chai
         .request(server)
         .put('/api/v1/announcement/'+0+'/sold')
-        .set('auth-token', userToken)
+        .set('auth-token', adminToken)
         .end((err, res) => {
             res.should.have.status(400);
             done();
         });
     });
-
-    it('should return 200 if returning all announcement from user', done => {
-        chai
-        .request(server)
-        .get('/api/v1/announcement')
-        .set('auth-token', userToken)
-        .end((err, res) => {
-            res.should.have.status(200);
-            done();
-        });
-    });
-
-    it('should return announcement for specific state', done => {
-        chai
-        .request(server)
-        .get(`/api/v1/announcement/${2}?status=pending`)
-        .set('auth-token', userToken)
-        .end((err, res) => {
-            res.should.have.status(200);
-            done();
-        });
-    });
-    
 });
