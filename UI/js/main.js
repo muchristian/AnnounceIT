@@ -7,6 +7,7 @@ const latest_toggle = document.querySelector('#js-latest-toggle');
 const latest_close = document.querySelector('#js-latest-close');
 let tab_link = document.querySelectorAll('.tab-link');
 let email = document.querySelector('#login-form #email');
+let password = document.querySelector('#login-form #password');
 let form = document.querySelector('#login-form');
 
 nav_toggle.addEventListener('click', () => {
