@@ -65,6 +65,21 @@ const viewAllAnnouncebyOwner = (req, res) => {
     }
 };
 
+const viewAnnouncementByState = (req, res) => {
+ const owners = announces.filter(a => a.owner == parseInt(req.params.id));
+ let arr =[];
+  for(let key in owners){
+      if(owners[key].status == req.query.status){
+          arr.push(owners[key]);
+      }
+  }
+  return res.status(200).json({
+      status:'success',
+      data:arr
+  });
+}
+ 
+
 const  viewAnnouncementById = (req, res) => {
     try{
         const announce = announces.find(a => a.id == parseInt(req.params.id));
@@ -136,4 +151,4 @@ const viewAllAnnounces = (req, res) => {
     });
 };
 
-export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementById, deleteAnnouncement, updateAnnounceStatus, viewAllAnnounces}
+export { createAnnounce, updateAnnounce, viewAllAnnouncebyOwner, viewAnnouncementByState, viewAnnouncementById, deleteAnnouncement, updateAnnounceStatus, viewAllAnnounces}

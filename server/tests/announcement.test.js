@@ -246,4 +246,16 @@ describe('test GET announcement', () => {
             done();
         });
     });
+
+    it('should return announcement for specific state', done => {
+        chai
+        .request(server)
+        .get(`/api/v1/announcement/${2}?status=pending`)
+        .set('auth-token', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+    
 });
