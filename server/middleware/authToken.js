@@ -24,4 +24,15 @@ const userVerify = async (req, res, next) => {
 
 }
 
-export { userVerify };
+const isadminVerify = async (req, res, next) => {
+    const { is_admin } = req.token;
+    if(is_admin == false){
+        return res.status(403).json({
+            status:'error',
+            message:'u cant get access'
+        });
+    }
+    next();
+}
+
+export { userVerify, isadminVerify };
