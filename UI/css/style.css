@@ -262,6 +262,10 @@ th:first-child, td:first-child{
 
 /* login-form id style  start*/
 
+#login-form{
+    text-align:center;
+}
+
 #login-form .input-group, #announce-form .input-group, #reset-form .input-group{
     padding:0 0 25px;
 }
@@ -278,8 +282,9 @@ th:first-child, td:first-child{
     text-transform: capitalize;
 }
 #login-form .input-group input, #reset-form .input-group input{
-    height: 35px;
+    height: 40px;
     padding: 0 10px 0; 
+    width:100%;
 }
 
 #login-form button, #reset-form button{
@@ -300,27 +305,14 @@ th:first-child, td:first-child{
 /* login-form style end*/
 
 /* signup-form style start */
+#signup-form{
+    text-align: center;
+}
+
 #signup-form .input-group{
     padding:0 0 25px;
 }
 
-#signup-form .input-group-name{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-#signup-form .input-group-name .input-group{
-    flex: 1;
-}
-#signup-form .input-group-name .input-group .label{
-    margin: 0 0 14px;
-    letter-spacing: 2;
-    text-transform: capitalize;
-}
-#signup-form .input-group-name .input-group input{
-    height: 35px;
-    padding: 0 10px 0; 
-}
 
 #signup-form .input-group .label, #announce-form .input-group .label{
     margin: 0 0 14px;
@@ -330,6 +322,7 @@ th:first-child, td:first-child{
 #signup-form .input-group input{
     height: 35px;
     padding: 0 10px 0; 
+    width:100%;
 }
 
 #signup-form button, #announce-form button{
@@ -635,21 +628,7 @@ font-size: 12px;
         width:100%;
     }
     .col2{
-        height: 100%;
-        width:0;
-        overflow-x: hidden;
-        transition:0.5s;
-        right:0;
-        z-index:10;
-        position: fixed;
-        overflow-y: scroll;
-        background: white;
-    }
-    .profile-div .latest-toggle{
-        display: block;
-    }
-    .latest-title .latest-close{
-        display: block;
+        width: 100%;
     }
 }
 /*homepage style end */
