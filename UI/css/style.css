@@ -262,9 +262,6 @@ th:first-child, td:first-child{
 
 /* login-form id style  start*/
 
-#login-form{
-    text-align:center;
-}
 
 #login-form .input-group, #announce-form .input-group, #reset-form .input-group{
     padding:0 0 25px;
@@ -305,9 +302,7 @@ th:first-child, td:first-child{
 /* login-form style end*/
 
 /* signup-form style start */
-#signup-form{
-    text-align: center;
-}
+
 
 #signup-form .input-group{
     padding:0 0 25px;
