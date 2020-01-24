@@ -413,9 +413,16 @@ th:first-child, td:first-child{
 /*homepage style start*/
 
 /* col1 and col-full style start */
-.col1{
+@media screen and (min-width:1052px){
+    .col1{
     flex: 1 2 70%;
 }
+    .col2{
+    flex: 2 0 30%;
+    box-shadow: 1px 0 2px #f1f1f1;
+}
+}
+
 .profile-div{
     position: relative;
     background-image: url("../assets/announceit.jpg");
@@ -528,10 +535,7 @@ flex-wrap: wrap;
 
 
 /*col2 style start */
-.col2{
-    flex: 2 0 30%;
-    box-shadow: 1px 0 2px #f1f1f1;
-}
+
 .latest-title{
     display: flex;
     justify-content: space-between;
