@@ -53,25 +53,16 @@ if (target.classList.contains('modal')) {
     if(form){
       form.addEventListener('submit', function(evt){
         evt.preventDefault();
-        if(email.value == 'admin@mail.com'){
+        if(email.value == 'admin@mail.com' && password.value == 'admin'){
           location.replace('user_admin.html');
-        }else if(email.value == 'advertiser@mail.com'){
+        }else if(email.value == 'advertiser@mail.com' && password.value == 'advertiser'){
           location.replace('user_advertiser.html');
         }else{
           location.replace('#');
         }
       });
     }
-if(latest_toggle){
-latest_toggle.addEventListener('click', () =>{
-    document.querySelector('.col2').style.width="100%";
-});
-}
-if(latest_close){
-latest_close.addEventListener('click', () =>{
-document.querySelector('.col2').style.width="0";
-});
-}
+
 
 
 
