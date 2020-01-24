@@ -377,7 +377,6 @@ th:first-child, td:first-child{
     }
     #login-form, #signup-form, #reset-form{
         margin:0 auto 0;
-        width: 400px;
     }
     .container-wrap .page-intro{
         flex:1 1 100%;
