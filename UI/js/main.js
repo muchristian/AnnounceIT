@@ -1,5 +1,4 @@
 
-// navbar menu responsiveness script..
 const menu = document.querySelector('#js_menu');
 const nav_toggle = document.querySelector('#js_navbar_toggle');
 const navbar = document.querySelector('.navbar');
@@ -49,19 +48,6 @@ if (target.classList.contains('modal')) {
 
     for(let i = 0; i < tab_link.length ; i++) {
       tab_link[i].addEventListener('click', change, false);
-    }
-
-    if(form){
-      form.addEventListener('submit', function(evt){
-        evt.preventDefault();
-        if(email.value == 'admin@mail.com' && password.value == 'admin'){
-          location.replace('user_admin.html');
-        }else if(email.value == 'advertiser@mail.com' && password.value == 'advertiser'){
-          location.replace('user_advertiser.html');
-        }else{
-          location.replace('#');
-        }
-      });
     }
 
 
