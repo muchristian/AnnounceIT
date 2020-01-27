@@ -1,4 +1,5 @@
 
+// navbar menu responsiveness script..
 const menu = document.querySelector('#js_menu');
 const nav_toggle = document.querySelector('#js_navbar_toggle');
 const navbar = document.querySelector('.navbar');
@@ -6,6 +7,7 @@ const latest_toggle = document.querySelector('#js-latest-toggle');
 const latest_close = document.querySelector('#js-latest-close');
 let tab_link = document.querySelectorAll('.tab-link');
 let email = document.querySelector('#login-form #email');
+let password = document.querySelector('#login-form #password');
 let form = document.querySelector('#login-form');
 
 nav_toggle.addEventListener('click', () => {
@@ -49,30 +51,6 @@ if (target.classList.contains('modal')) {
       tab_link[i].addEventListener('click', change, false);
     }
 
-    if(form){
-      form.addEventListener('submit', function(evt){
-        evt.preventDefault();
-        if(email.value == 'admin@mail.com'){
-          location.replace('user_admin.html');
-        }else if(email.value == 'advertiser@mail.com'){
-          location.replace('user_advertiser.html');
-        }else{
-          location.replace('#');
-        }
-      });
-    }
-      
-    
-if(latest_toggle){
-  latest_toggle.addEventListener('click', () =>{
-    document.querySelector('.col2').style.width="100%";
-});
-}
-if(latest_toggle){
-  latest_close.addEventListener('click', () =>{
-    document.querySelector('.col2').style.width="0";
-    });
-}
 
 
 

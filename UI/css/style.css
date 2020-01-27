@@ -14,9 +14,10 @@ body{
     margin: 0 auto;
     max-width: 1150px;
 }
+
     
 
-
+/* navbar style start */
 @media screen and (max-width:768px){
     .navbar{
         background-color: white;
@@ -140,7 +141,7 @@ body{
 }
 
 
-
+/* navbar style end */
 
 .full-page{
     position: relative;
@@ -176,18 +177,18 @@ body{
         z-index: 2;
         background: rgba(0, 0, 0, 0.7);
 }
-
+/*main content style start */
 .container-wrap{
     padding-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    min-height: 100%;
 }
 .main{
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    height:100%;
     top:65px;
 }
 .container-wrap .page-intro h2{
@@ -254,7 +255,16 @@ th,td{
 th:first-child, td:first-child{
     text-align: left;
 }
+/* reset password style start */
 
+/* reset password end style */
+
+
+/* login-form id style  start*/
+
+#login-form , #reset-form{
+    text-align: center;
+}
 
 #login-form .input-group, #announce-form .input-group, #reset-form .input-group{
     padding:0 0 25px;
@@ -272,11 +282,12 @@ th:first-child, td:first-child{
     text-transform: capitalize;
 }
 #login-form .input-group input, #reset-form .input-group input{
-    height: 35px;
-    padding: 0 10px 0; 
+    height: 40px;
+    padding: 0 10px 0;
+    width: 100%;
 }
 
-#login-form button, #reset-form button{
+#login-form .btn, #reset-form .btn{
     padding:7px;
     background-color:#00b386;
     color:#f1f1f1;
@@ -285,32 +296,21 @@ th:first-child, td:first-child{
     text-transform: capitalize;
     border:1px solid transparent;
     outline: none;
+    text-decoration: none;
 }
 #login-form .signup-link a, #reset-form .signin-link a{
     color:#00b386;
     text-decoration: none;
 }
 
+/* login-form style end*/
+
+/* signup-form style start */
+#signup-form{
+    text-align: center;
+}
 #signup-form .input-group{
     padding:0 0 25px;
-}
-
-#signup-form .input-group-name{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-#signup-form .input-group-name .input-group{
-    flex: 1;
-}
-#signup-form .input-group-name .input-group .label{
-    margin: 0 0 14px;
-    letter-spacing: 2;
-    text-transform: capitalize;
-}
-#signup-form .input-group-name .input-group input{
-    height: 35px;
-    padding: 0 10px 0; 
 }
 
 #signup-form .input-group .label, #announce-form .input-group .label{
@@ -321,6 +321,7 @@ th:first-child, td:first-child{
 #signup-form .input-group input{
     height: 35px;
     padding: 0 10px 0; 
+    width:100%;
 }
 
 #signup-form button, #announce-form button{
@@ -333,17 +334,15 @@ th:first-child, td:first-child{
     border:1px solid transparent;
     outline: none;
 }
-
+/* signup-form style end */
 
 @media screen and (max-width:768px){
-    
     .full-page{
         position: relative;
         flex:1 1 100%;
         background-image: url("../assets/announceit.jpg");
         background-repeat: no-repeat;
-        background-size: 100% 350px;
-        height:350px;
+        background-size: 100% 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -362,22 +361,20 @@ th:first-child, td:first-child{
     }
     .overpage{
         position: absolute;
-            height: 350px;
+            height: 100%;
             width: 100%;
             z-index: 2;
             background: rgba(0, 0, 0, 0.7);
     }
     #login-form, #signup-form, #reset-form{
         margin:0 auto 0;
-        width: 400px;
     }
     .container-wrap .page-intro{
         flex:1 1 100%;
         background-image: url("../assets/announceit.jpg");
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 100% auto;
-        height:250px;
+        background-size: 100% 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -390,37 +387,44 @@ th:first-child, td:first-child{
             background: rgba(0, 0, 0, 0.7);
     }
 .container-wrap .page-form{
-        flex:1 1 100%;
         background: white;
         padding:20px 0 30px;
-
+        z-index: 15;
     }
 }
 
 .container-wrap .page-intro{
         position: relative;
-        flex:1 1 60%;
+        flex:1 1 100%;
+            min-height: 434px;
         background-image: url("../assets/announceit.jpg");
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100% 100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .container-wrap .page-form{
-        flex:2 1 40%;
         background: white;
         padding:30px;
+        z-index: 15;
     }
     
 
 
+/*homepage style start*/
 
-
-
-.col1{
+/* col1 and col-full style start */
+@media screen and (min-width:1052px){
+    .col1{
     flex: 1 2 70%;
 }
+    .col2{
+    flex: 2 0 30%;
+    box-shadow: 1px 0 2px #f1f1f1;
+}
+}
+
 .profile-div{
     position: relative;
     background-image: url("../assets/announceit.jpg");
@@ -445,6 +449,9 @@ th:first-child, td:first-child{
 .profile-basic{
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    /* padding: 0 30px 0; */
+    /* width: 70%; */
     text-align: center;
 }
 
@@ -494,19 +501,6 @@ flex-wrap: wrap;
     text-decoration: none;
 }
 
-.profile-div .latest-toggle{
-    z-index: 3;
-    position: absolute;
-    color: white;
-    right: 30px;
-    top: 20px;
-    display: none;
-}
-
-.profile-div .latest-toggle i{
-    color:#f1f1f1;
-    font-size: 25px;
-}
 
 .container-wrap .col1 .post-announce-div{
     position: relative;
@@ -525,10 +519,12 @@ flex-wrap: wrap;
     
 }
 
-.col2{
-    flex: 2 0 30%;
-    box-shadow: 1px 0 2px #f1f1f1;
-}
+
+/* col1 style end */
+
+
+/*col2 style start */
+
 .latest-title{
     display: flex;
     justify-content: space-between;
@@ -539,15 +535,6 @@ flex-wrap: wrap;
     text-transform: capitalize;
     margin-left: 7px;
     color: rgba(0, 0, 0, 0.6);
-}
-.latest-title .latest-close{
-    margin-right: 15px;
-    display: none;
-}
-.latest-title .latest-close i{
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.6);
-    font-weight: 600;
 }
 
 .col2 hr{
@@ -613,30 +600,18 @@ font-size: 12px;
 }
 
 
+/* col2 style end */
 
 @media screen and (max-width:1052px){
     .col1{
         width:100%;
     }
     .col2{
-        height: 100%;
-        width:0;
-        overflow-x: hidden;
-        transition:0.5s;
-        right:0;
-        z-index:10;
-        position: fixed;
-        overflow-y: scroll;
-        background: white;
-    }
-    .profile-div .latest-toggle{
-        display: block;
-    }
-    .latest-title .latest-close{
-        display: block;
+        width: 100%;
     }
 }
-
+/*homepage style end */
+/* col-full style start*/
 .col-full {
     flex: 1 1 70%;
 }
@@ -680,7 +655,6 @@ display: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
     margin:0 auto 0;
 }
 
@@ -689,8 +663,8 @@ display: none;
     text-align: center;
     display: flex;
     flex-direction: column;
-    padding:6px 0 0;
-    margin:20px 0 20px;
+    padding:14px 0 0;
+    margin:20px 28px 20px;
     height:100px;
     width:26.666%;
     position: relative;
@@ -703,15 +677,13 @@ font-size:14px;
 color:rgba(0, 0, 0, 0.6);
 }
 .view-announce-list .item .action{
-padding:3px 8px 2px;
-
-position: absolute;
-bottom:9px;
-display: flex;
-justify-content: space-between;
-width: 100%;
-height: 15px;
-border-top:1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px 8px 2px;
+    position: absolute;
+    bottom: 9px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 22px;
 }
 .view-announce-list .item .action span:hover{
 color:#1e6eff;
@@ -730,9 +702,9 @@ cursor: pointer;
      width:100%;
     }
 }
+/* col-full style end*/
 
-
-
+/* col-admin style start*/
 .col-admin{
     flex:1 1 100%;
 }
@@ -856,12 +828,13 @@ cursor: pointer;
 .blacklist-users, .view-announce-admin{
     display: none;
 }
-
+/*col-admin style end*/
 .active{
     display: block;
 }
 
 
+/*modal style*/
 
 .modal{
     position: fixed;
@@ -972,7 +945,7 @@ background:rgb(190, 9, 9);
 .open {
     display: block;
 }
-
+/*modal style end*/
 footer{
     bottom: 0;
     width: 100%;
