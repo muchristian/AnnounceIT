@@ -10,14 +10,6 @@
             AnnounceIT
         </title>
         <link href="../css/style.css" rel="stylesheet" />
-        <style>
-            @media screen and (min-width:768px){
-                .main .page-form{
-                    height:500px;
-                }
-            }
-            
-        </style>
         <script src="https://kit.fontawesome.com/3d6f968a21.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -39,28 +31,28 @@
             <div class="container-wrap">
             <div class="page-intro">
                     <div class="overlay"></div>
-                    <h2>login<br><span>AnnounceIT</span></h2>
-            </div>
-            <div class="page-form" style="height:600px;">
-                <h2>login</h2>
-
-                <p class="description">on this page you will be able to make authentication on this page..</p>
-                <hr width="60%">
-                <form id="login-form">
-                    <div class="input-group">
-                        <p class="label">email</p>
-                        <input type="email" name="email" id="email" placeholder="email@mail.com">
+                    <div class="page-form">
+                        <h2>login</h2>
+        
+                        <p class="description">on this page you will be able to make authentication on this page..</p>
+                        <hr width="60%">
+                        <form id="login-form">
+                            <div class="input-group">
+                                <p class="label">email</p>
+                                <input type="email" name="email" id="email" placeholder="email@mail.com">
+                            </div>
+                            <div class="input-group">
+                                <p class="label">password</p>
+                                <input type="password" name="password" id="password" placeholder="password"><br>
+                                <a href="reset-password.html" class="reset">reset password!</a>
+                            </div>
+        
+                            <a href="user_advertiser.html" class="btn" type="submit" name="submit">signin</a>
+                            <span class="signup-link">or <a href="signup.html"><em>signup!</em></a></span>
+                        </form>
                     </div>
-                    <div class="input-group">
-                        <p class="label">password</p>
-                        <input type="password" name="password" id="password" placeholder="password"><br>
-                        <a href="reset-password.html" class="reset">reset password!</a>
-                    </div>
-
-                    <button type="submit" name="submit">signin</button>
-                    <span class="signup-link">or <a href="signup.html"><em>signup!</em></a></span>
-                </form>
             </div>
+            
         </div>
             <footer>
                 <span>AnnounceIT &copy; <script>document.write(new Date().getFullYear());</script></span>
