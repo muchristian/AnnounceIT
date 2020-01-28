@@ -1,45 +1,354 @@
 {
-    "info": {
-      "title": "AnnounceIT",
-      "version": "1.0.0",
-      "description": "announcing online platform"
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Epic mail",
+    "description": "api",
+    "license": {
+      "name": "MIT",
+      "url": ""
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v2",
+  "tags": [
+    {
+      "name": "Messages",
+      "description": "API for the messages in the application"
     },
-    "host": "localhost:3000",
-    "basePath": "/api/v1",
-    "swagger": "2.0",
-    "tags": [
-        {
-          "name": "signup",
-          "description": "API for the signup in the application"
-        }
-      ],
-      "schemes": ["http"],
+    {
+      "name": "login",
+      "description": "API for the login in the application"
+    },
+    {
+      "name": "user",
+      "description": "API for the signup in the application"
+    },
+    {
+      "name": "members",
+      "description": "API for the member in the application"
+    },
+    {
+      "name": "groups",
+      "description": "API for the member in the application"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
   "produces": ["application/json"],
-    "paths": { 
-        "auth/signup": {
-            "post": {
-              "tags": ["signup"],
-              "description": "Create new user in system",
-              "parameters": [
-                {
-                  "name": "signup",
-                  "in": "body",
-                  "description": "new user that we want to create",
-                  "schema": {
-                    "$ref": "#/definitions/users"
-                  }
-                }
-              ],
-              "produces": ["application/json"],
-              "responses": {
-                "200": {
-                  "description": "New user is created",
-                  "schema": {
-                    "$ref": "#/definitions/users"
-                  }
-                }
-              }
+  "paths": {
+    "/messages": {
+      "post": {
+        "tags": ["messages"],
+        "description": "Create new message in system",
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "description": "message that we want to create",
+            "schema": {
+              "$ref": "#/definitions/message"
             }
           }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New message is created",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["messages"],
+        "summary": "Get all messages in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      }
+    },
+    "/messages/{messageId}": {
+      "parameters": [
+        {
+          "name": "messageId",
+          "in": "path",
+          "required": true,
+          "description": "ID of message that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["messages"],
+        "summary": "Get message with given ID",
+        "responses": {
+          "200": {
+            "description": "message is found",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete message with given ID",
+        "tags": ["messages"],
+        "responses": {
+          "200": {
+            "description": "message is deleted",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      }
+    },
+
+    "/auth/login": {
+      "post": {
+        "tags": ["login"],
+        "description": "Create new login in system",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "body",
+            "description": "login that we want to create",
+            "schema": {
+              "$ref": "#/definitions/users"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New login  is created",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "auth/signup": {
+      "post": {
+        "tags": ["signup"],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "Signup",
+            "in": "body",
+            "description": "new user that we want to create",
+            "schema": {
+              "$ref": "#/definitions/users"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New user  is created",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+
+    "/groups/{groupId}/users": {
+      "post": {
+        "tags": ["members"],
+        "description": "Create new member in system",
+        "parameters": [
+          {
+            "name": "add member",
+            "in": "body",
+            "description": "member that we want to create",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New member  is created",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete member with given ID",
+        "tags": ["members"],
+        "responses": {
+          "200": {
+            "description": "member is deleted",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        }
+      }
+    },
+    "/groups": {
+      "post": {
+        "tags": ["groups"],
+        "description": "Create new group in system",
+        "parameters": [
+          {
+            "name": "groups",
+            "in": "body",
+            "description": "group that we want to create",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New group is created",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["groups"],
+        "summary": "Get all groups in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}": {
+      "parameters": [
+        {
+          "name": "groupsId",
+          "in": "path",
+          "required": true,
+          "description": "ID of group that we want to find",
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "tags": ["groups"],
+        "summary": "Get message with given ID",
+        "responses": {
+          "200": {
+            "description": "message is update",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete group with given ID",
+        "tags": ["groups"],
+        "responses": {
+          "200": {
+            "description": "group is deleted",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        }
+      }
+    },
+
+    "definitions": {
+      "User": {
+        "required": ["email", "_id"],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "email": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "passWord": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "message": {
+      "required": ["message", "_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "createdOn": {
+          "type": "string"
+        },
+        "type": "string"
+      },
+
+      "message": {
+        "type": "string"
+      }
+    },
+
+    "Messages": {
+      "type": "array",
+      "$ref": "#/definitions/message"
+    },
+    "member": {
+      "required": ["member", "_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": "string"
+      },
+
+      "message": {
+        "type": "string"
+      }
+    },
+
+    "Member": {
+      "type": "array",
+      "$ref": "#/definitions/members"
     }
   }
+}

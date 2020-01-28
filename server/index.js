@@ -1,27 +1,25 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from './swagger.json';
-import cors from './config/cors';
 import constants from './config/constants';
-import routes from './routes';
+import middleware from './middleware';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger';
 
 const server = express();
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json());
-server.use(morgan('dev'));
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-server.use(cors);
-routes(server);
-server.listen(constants.PORT, async (req, res) =>{
-    try{
-      console.log(`server start on port:${constants.PORT}`);
-    }
-    catch(error){
-        return res.status(400).json({ status:400, error:'server with that not exist'});
-    }
-    
+server.use(morgan('dev'));
+server.use(express.json());
+
+// Passing all of our APIs config/endpoints to our express server to use them
+
+middleware(server);
+
+// Starting our Express server and pass it the port to listen to.
+
+server.listen(constants.PORT, () => {
+  console.log(`server is running to port:${constants.PORT}`);
 });
+
+// Exported the server for testing purpose //
 
 export default server;

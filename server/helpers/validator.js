@@ -1,39 +1,66 @@
-import Joi from '@hapi/joi';
+import Joi from 'joi';
 
 const validateUser = user => {
-    const schema = Joi.object({
-        first_name: Joi.string()
-        .min(3)
-        .required(),
-        last_name: Joi.string()
-        .min(3)
-        .required(),
-        email: Joi.string()
-        .email()
-        .required(),
-        password: Joi.string()
-        .min(4)
-        .required(),
-        phoneNumber: Joi.string()
-        .required(),
-        address: Joi.string()
-        .min(3)
-        .required(),
-        is_admin: Joi.boolean()
-    });
-    return schema.validate(user);
+  const schema = {
+    firstName: Joi.string()
+      .min(3)
+      .required(),
+    lastName: Joi.string()
+      .regex(/^[a-zA-Z ]/)
+      .required(),
+    email: Joi.string()
+      .regex(
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
+      .required(),
+    password: Joi.string()
+      .regex(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/)
+      .required(),
+    role: Joi.string()
+      .min(3)
+      .required()
+  };
+  return Joi.validate(user, schema);
 };
 
-const validateAnnounce = announce => {
-    const schema = Joi.object({
-        text: Joi.string()
-        .min(6)
-        .max(250)
-        .required()
-    });
-    return schema.validate(announce);
+const validateMessage = message => {
+  const schema = {
+    subject: Joi.string()
+      .regex(/^[a-zA-Z ]/)
+      .required(),
+    message: Joi.string()
+      .min(5)
+      .required(),
+    parentMessageId: Joi.number()
+      .min(1)
+      .required(),
+    receiver: Joi.number()
+      .min(1)
+      .required(),
+
+    status: Joi.string()
+      .min(3)
+      .required()
+  };
+  return Joi.validate(message, schema);
 };
-
-
-
-export { validateUser, validateAnnounce };
+const validateGroup = group => {
+  const schema = {
+    groupName: Joi.string()
+      .regex(/^[a-zA-Z ]/)
+      .required()
+  };
+  return Joi.validate(group, schema);
+};
+const validateMember = member => {
+  const schema = {
+    userId: Joi.number()
+      .min(1)
+      .required(),
+    role: Joi.string()
+      .regex(/^[a-zA-Z ]/)
+      .required()
+  };
+  return Joi.validate(member, schema);
+};
+export { validateUser, validateMessage, validateGroup, validateMember };

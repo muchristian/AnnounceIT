@@ -1,0 +1,5 @@
+{
+  "PORT": "PORT",
+  "DB_URL": "DATABASE_URL",
+  "DEBUGGER": "DEBUG"
+}

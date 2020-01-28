@@ -1,9 +1,9 @@
-/node_modules
-.env
+node_modules
+npm-debug.*
+yarn.*
+yarn-error.*
+coverage
 .nyc_output
-/server/controllers
-/server/helpers
-/server/middleware
-/server/models
-/server/routes
-/server/tests
+TODO.md
+PR.md
+.env

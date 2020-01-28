@@ -1,7 +1,21 @@
 language: node_js
 node_js:
   - 'stable'
-install: npm install
-script: npm test
+cache:
+  directories:
+    - 'node_modules'
+addons:
+  postgresql: '9.6'
+services:
+  - postgresql
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - npm run db
+script:
+  - npm test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 after_success:
   - npm run coveralls

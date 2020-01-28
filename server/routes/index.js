@@ -1,19 +1,20 @@
 import { Router } from 'express';
-import authRouter from './auth';
-import announceRouter from './announcement';
-import api from '../config/constants';
+import authRoutes from './authorization';
+import messagesRoutes from './message';
+import groupsRoutes from './groups';
+// import all of your routes from their files
 
+const routes = Router();
 
-export default server => {
+/** ********* API ENTRYPOINT **************************** */
 
-    
-    const routes = Router();
-    const entryPoint = Router();
-    entryPoint.get('/', (req, res) => {
-        res.status(200).json({status:'success', message:'welcome'});
-    });
+const entryPoint = Router();
+entryPoint.get('/', (req, res) => {
+  res.status(200).json({ message: 'welcome' });
+});
 
-    routes.use(entryPoint, authRouter, announceRouter);
-    server.use(api.PROXY, routes);
-};
+/** ********** ALL ENDPOINTS *************************** */
 
+routes.use(entryPoint, authRoutes, messagesRoutes,groupsRoutes);
+
+export default routes;

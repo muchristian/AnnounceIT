@@ -1,21 +1,20 @@
-const users = [{
-    id:1,
-    first_name:'Mucyo',
-    last_name:'Christian',
-    email:'mucyochristian2@gmail.com',
-    password:'chris32',
-    phoneNumber:'0782728660',
-    address:'kigali',
-    is_admin:false
-}];
-
-const announces = [{
-    id:1,
-    owner:1,
-    status:'pending',
-    text:'No problems have been detected in the workspace so far',
-    start_date: new Date(),
-    end_date: new Date()
-}];
-
-export { users, announces };
+const users = [
+  {
+    id: 1,
+    email: 'murediana@gmail.com',
+    firstName: 'Gloria',
+    lastName: 'atete',
+    password: 'diane123'
+  }
+];
+const messages = [
+  {
+    id: 1,
+    createdOn: '10/12/2018',
+    subject: 'Greetings',
+    message: 'hello my friend',
+    parentMessageId: 1,
+    status: 'sent'
+  }
+];
+export { users, messages };

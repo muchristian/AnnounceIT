@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/css/common.css" />
+     <link rel="stylesheet" type="text/css" href="../../assets/css/new-order.css" /> 
+    <script src="../../js/common .js"></script>
+    <title>Epic-mail</title>
+</head>
+<body>
+    <header>
+        <a class="header-brand" href="index.html"> EPIC mail</a>
+       
+      </header>
+    <section id="profile-box">
+        <div>
+            
+                <li>
+                    <a href="index.html">
+                        <div class="side-option ">
+                            <h1> Admin dashboard</h1>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../index.html">
+                        <div class="side-option">
+                            <h1>logout</h1>
+                        </div>
+                    </a>
+                </li>
+
+
+        </div>
+
+
+    </section>
+
+
+    <section class="content">
+        <div class="overview"></div>
+
+        <div class="lg-card">
+            <div class="lg-card-content">
+                <div class="data-table">
+                    <table>
+                        <tr><th>group name</th>
+                            <th>number of members</th>
+                            <th>created on </th>
+                            <th>add a new member</th>
+                        </tr>
+                        <tr>
+                            <td>Andela</td>
+                            <td>12</td>
+                            <td>11/2/2019</td>
+                            <td>
+                                <img
+                                  onclick="openModal('add-member')"
+                                  class="hover"
+                                  src="../../assets/icons/user.png"
+                                  alt="lg"
+                                  title="add a new member"
+                                />
+                              </td>
+                        </tr>
+                        <tr>
+                                <td>Andela</td>
+                                <td>12</td>
+                                <td>11/2/2019</td>
+                                <td>
+                                    <img
+                                      onclick="openModal('add-member')"
+                                      class="hover"
+                                      src="../../assets/icons/user.png"
+                                      alt="lg"
+                                      title="add a new member"
+                                    />
+                                  </td>
+                            </tr>
+                            <tr>
+                                    <td>Andela</td>
+                                    <td>12</td>
+                                    <td>11/2/2019</td>
+                                    <td>
+                                        <img
+                                          onclick="openModal('add-member')"
+                                          class="hover"
+                                          src="../../assets/icons/user.png"
+                                          alt="lg"
+                                          title="add a new member"
+                                        />
+                                      </td>
+                                </tr>
+                                <tr>
+                                        <td>Andela</td>
+                                        <td>12</td>
+                                        <td>11/2/2019</td>
+                                        <td>
+                                            <img
+                                              onclick="openModal('add-member')"
+                                              class="hover"
+                                              src="../../assets/icons/user.png"
+                                              alt="lg"
+                                              title="add a new member"
+                                            />
+                                          </td>
+                                    </tr>
+                      
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="modal change-dest" id="add-member">
+        <div class="modal-header">
+          Add the new member to the group
+          <img
+            onclick="closeModal('add-member')"
+            src="../../assets/icons/2.png"
+            alt="lg"
+            title="Cancel"
+          />
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <img src="../../assets/icons/user.png" alt="" />
+            </div>
+            <input class="modal-form-control" placeholder="add the new member's contact" />
+          </div>
+          <a class="modal-submit" href="#">
+            <img class="fab-icon" src="../../assets/icons/confirm.png " alt="logo" />
+            <p>save changes</p>
+          </a>
+        </div>
+      </section>
+
+    <section class="modal add-new" id="new-order">
+        <div class="modal-header">
+            add new group
+            <img onclick="closeModal('new-order')" src="../../assets/icons/2.png" alt="lg" title="Cancel" />
+        </div>
+        <div class="modal-body">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <img src="../../assets/icons/about-us.png" alt="" />
+                </div>
+                <input class="modal-form-control" placeholder="group name" />
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <img src="../../assets/icons/employee.png" alt="" />
+                </div>
+                <input class="modal-form-control" placeholder=" add the member's contact" />
+            </div>
+        
+            
+            <a class="modal-submit" href="#">
+                <img class="fab-icon" src="../../assets/icons/confirm.png " alt="logo" />
+                <p>create</p>
+            </a>
+        </div>
+    </section>
+
+
+    <a class="fab" href="#" onclick="openModal('new-order')">
+        <img class="fab-icon" src="../../assets/icons/about-us.png" alt="logo" />
+        <p>create group</p>
+    </a>
+    <section class="modal add-new" id="new-order">
+        <div class="modal-header">
+            Create a new group
+            <img onclick="closeModal('new-order')" src="../../assets/icons/2.png" alt="lg" title="Cancel" />
+        </div>
+        <div class="modal-body">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <img src="../../assets/icons/about-us.png" alt="" />
+                </div>
+                <input class="modal-form-control" placeholder="to" />
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <img src="../../assets/icons/employee.png" alt="" />
+                </div>
+                <input class="modal-form-control" placeholder="from" />
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <img src="../../assets/icons/email.png" alt="" />
+                </div>
+               ,<textarea name="message" class="modal-form-control" cols="30" rows="10"></textarea>
+            </div>
+            
+            
+            <a class="modal-submit" href="#">
+                <img class="fab-icon" src="../../assets/icons/confirm.png " alt="logo" />
+                <p>submit</p>
+            </a>
+            
+        </div>
+    </section>
+</body>
+</html>
