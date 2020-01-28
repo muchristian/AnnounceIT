@@ -1,3 +1,9 @@
 /node_modules
 .env
 .nyc_output
+/server/controllers
+/server/helpers
+/server/middleware
+/server/models
+/server/routes
+/server/tests
