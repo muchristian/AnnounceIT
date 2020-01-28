@@ -1,7 +1,14 @@
 language: node_js
 node_js:
   - 'stable'
-install: npm install
+addons:
+  postgresql: '10'
+services:
+  - postgresql
+before_script:
+  - npm install
+  - psql -c 'create database announceit;' -U postgres
+  - npm run migrate
 script: npm test
 after_success:
   - npm run coveralls
