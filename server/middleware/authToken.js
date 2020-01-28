@@ -2,10 +2,10 @@ import Utils from '../helpers/utils';
 import key from '../config/constants';
 
 const userVerify = async (req, res, next) => {
-    const token  = req.header('auth-token');
+    const token  = req.header('Authorization');
     if(!token){
         return res.status(401).json({
-            status:'error',
+            status:401,
             message:'access denied please'
         });
     }
@@ -16,8 +16,8 @@ const userVerify = async (req, res, next) => {
         return next();
     }
     catch(err){
-        return res.status(403).json({
-            status:'error',
+        return res.status(400).json({
+            status:400,
             message:'forbidden'
         });
     }
@@ -27,9 +27,9 @@ const userVerify = async (req, res, next) => {
 const isadminVerify = async (req, res, next) => {
     const { is_admin } = req.token;
     if(is_admin == false){
-        return res.status(403).json({
-            status:'error',
-            message:'u cant get access'
+        return res.status(401).json({
+            status:401,
+            message:'access denied as admin'
         });
     }
     next();

@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint ./server",
     "migrate": "babel-node ./server/models/table-migration.js",
+    "seeder": "babel-node ./server/models/seeder.js",
     "test": "nyc mocha --require @babel/register ./server/tests/**/*.test.js  --timeout 25000 --exit ",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon --exec babel-node --require dotenv/config ./server"
