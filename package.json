@@ -11,7 +11,8 @@
     "start": "nodemon --exec npm run build"
   },
   "engines": {
-    "node": "12.14.1"
+    "node": "12.14.1",
+    "npm": "6.13.4"
   },
   "keywords": [],
   "author": "",
