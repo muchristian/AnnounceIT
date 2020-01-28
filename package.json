@@ -10,6 +10,9 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon --exec npm run build"
   },
+  "engines": {
+    "node": "12.14.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
