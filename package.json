@@ -5,6 +5,7 @@
   "main": "./server",
   "scripts": {
     "lint": "eslint ./server",
+    "migrate": "babel-node ./server/models/table-migration.js",
     "test": "nyc mocha --require @babel/register ./server/tests/**/*.test.js  --timeout 25000 --exit ",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon --exec babel-node --require dotenv/config ./server"
@@ -44,6 +45,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
+    "pg": "^7.17.1",
     "swagger-ui-express": "^4.1.3"
   }
 }
