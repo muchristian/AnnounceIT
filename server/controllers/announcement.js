@@ -1,18 +1,21 @@
-import { announces } from '../models'
+import Model from '../models/index.dbquery';
+const announce = new Model('announcement');
 
-const createAnnounce = (req, res) => {
+const createAnnounce = async (req, res) => {
     const { text } = req.body;
-    const announce = {id:announces.length + 1, owner: req.token.id, status:"pending", text, start_date: new Date(), end_date: new Date()};
-    announces.push(announce);
+
+    const addAnnounce = await announce.insert('owner, text',
+    '$1, $2',
+    [req.token.id, text]);
     return res.status(200).json({
-        status:'success',
+        status:200,
         data: {
-            id: announce.id,
-            owner: announce.owner,
-            status: announce.status,
-            text: announce.text,
-            start_date: announce.start_date,
-            end_date: announce.end_date
+            id: addAnnounce.rows[0].id,
+            owner: addAnnounce.rows[0].owner,
+            status: addAnnounce.rows[0].status,
+            text: addAnnounce.rows[0].text,
+            start_date: addAnnounce.rows[0].start_date,
+            end_date: addAnnounce.rows[0].end_date
         }
     });
 };
