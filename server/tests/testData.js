@@ -34,8 +34,8 @@ const userSignup4 = {
 };
 
 const userSignin1 = {
-    email:'markchris2@gmail.com',
-    password:'mark32'
+    email:"markchris1@gmail.com",
+    password:"chris32",
 };
 
 const userSignin2 = {
