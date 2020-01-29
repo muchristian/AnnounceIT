@@ -15,11 +15,11 @@ const conf = new Pool({
   password: config.password,
   port: config.port,
 });
+
 const url  = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
+  connectionString: process.env.DATABASE_URL
 })
-const pool = conf || url;
+const pool =  url || conf;
 
 
 
