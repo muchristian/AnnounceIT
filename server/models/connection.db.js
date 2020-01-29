@@ -18,10 +18,8 @@ const conf = new Pool({
 
 const url  = new Pool({
   connectionString: process.env.DATABASE_URL
-})
-const pool =  url || conf;
-
-
+});
+let pool =  url || conf;
 
 pool.on('error', (error) =>{
 console.log(error);

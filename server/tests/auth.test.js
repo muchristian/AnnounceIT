@@ -27,7 +27,7 @@ describe('test signup', () => {
     it('should return 400 if the body is invalid', (done) => {
         chai
         .request(server)
-        .post('/api/v1/auth/signup')
+        .post('/api/v2/auth/signup')
         .send(userSignup2)
         .end((err, res) => {
             res.should.have.status(400);
@@ -37,7 +37,7 @@ describe('test signup', () => {
     it('should return 201 if the registration passed', (done) =>{
         chai
         .request(server)
-        .post('/api/v1/auth/signup')
+        .post('/api/v2/auth/signup')
         .send(userSignup1)
         .end((err, res) => {
             res.should.have.status(201);
@@ -50,7 +50,7 @@ describe('test signup', () => {
         it('should return 409 if the user with that email exist', (done) =>{
             chai
             .request(server)
-            .post('/api/v1/auth/signup')
+            .post('/api/v2/auth/signup')
             .send(userSignup1)
             .end((err, res) => {
                 res.should.have.status(409);
@@ -63,7 +63,7 @@ describe('test signup', () => {
         it('should return 200 if the authentication is passed', (done) => {
         chai
         .request(server)
-        .post('/api/v1/auth/signin')
+        .post('/api/v2/auth/signin')
         .send(userSignin1)
         .end((err, res) => {
         res.should.have.status(200);
@@ -73,7 +73,7 @@ describe('test signup', () => {
         it('should return 400 if the user doesnt exist', (done) => {
             chai
             .request(server)
-            .post('/api/v1/auth/signin')
+            .post('/api/v2/auth/signin')
             .send(userSignin2)
             .end((err, res) => {
                 res.should.have.status(400);

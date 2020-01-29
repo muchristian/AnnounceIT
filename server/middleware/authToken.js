@@ -6,7 +6,7 @@ const userVerify = async (req, res, next) => {
     if(!token){
         return res.status(401).json({
             status:401,
-            message:'access denied please'
+            message:'access denied no token provided'
         });
     }
 
@@ -16,9 +16,9 @@ const userVerify = async (req, res, next) => {
         return next();
     }
     catch(err){
-        return res.status(400).json({
-            status:400,
-            message:'forbidden'
+        return res.status(401).json({
+            status:401,
+            message:'authentication token invalid'
         });
     }
 

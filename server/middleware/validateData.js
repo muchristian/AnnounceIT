@@ -22,4 +22,4 @@ const validateAnnounces = async (req, res, next) => {
             return next();
 };
 
-export {validateSignup};
+export {validateSignup, validateAnnounces};
