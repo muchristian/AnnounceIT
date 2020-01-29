@@ -8,14 +8,14 @@ const config = {
     port: 5432,
 };
 
-const pool = new Pool({
+const conf = new Pool({
 	user: config.username,
   host: config.host,
   database: config.database,
   password: config.password,
   port: config.port,
 });
-
+const pool = conf || process.env.DATABASE_URL
 
 
 
