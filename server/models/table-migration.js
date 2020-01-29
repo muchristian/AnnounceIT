@@ -5,12 +5,11 @@ const createTables = async () => {
                 id SERIAL PRIMARY KEY,
                 first_name VARCHAR(50) NOT NULL,
                 last_name VARCHAR(30) NOT NULL,
-                email VARCHAR(50) NOT NULL,
+                email VARCHAR(50) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
                 phone_number varchar(50) NOT NULL,
                 address varchar(30) NOT NULL,
-                is_admin boolean DEFAULT false,
-                UNIQUE(email)
+                is_admin boolean DEFAULT false
             )`;
                 
     const announcementQuery = `CREATE TABLE IF NOT EXISTS announcement(

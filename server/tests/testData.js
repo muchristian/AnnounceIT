@@ -1,40 +1,36 @@
 const userSignup1 = {
-    first_name:'Mark',
-    last_name:'Chris',
-    email:'markchris2@gmail.com',
-    password:'mark32',
-    phoneNumber:'0782728660',
-    address:'kigali',
-    is_admin:false
+    first_name:"Ffda",
+    last_name:"chris43",
+    email:"markchris1@gmail.com",
+    password:"chris32",
+    phone_number:"0782728660",
+    address:"kigali"
 };
 
 const userSignup2 = {
-    first_name:'Mucyo',
-    last_name:'Christian',
-    password:'chris32',
-    phoneNumber:'0782728660',
-    address:'kigali',
-    is_admin:false
+    first_name:"Ffda",
+    last_name:"chris43",
+    password:"chris32",
+    phone_number:"0782728660",
+    address:"kigali"
 };
 
 const userSignup3 = {
-    first_name:'Mark',
-    last_name:'Chris',
-    email:'markchris23@gmail.com',
-    password:'mark23',
-    phoneNumber:'0782728660',
-    address:'kigali',
-    is_admin:false
+    first_name:"user",
+    last_name:"chris32",
+    email:"userchris156@gmail.com",
+    password:"chris32",
+    phone_number:"0782728660",
+    address:"kigali"
 };
 
 const userSignup4 = {
-    first_name:'Mark',
-    last_name:'Chris',
-    email:'markadmin23@gmail.com',
-    password:'admin23',
-    phoneNumber:'0782728660',
-    address:'kigali',
-    is_admin:true
+    first_name:"admin",
+    last_name:"chris23",
+    email:"adminchris143@gmail.com",
+    password:"chris32",
+    phone_number:"0782728660",
+    address:"kigali"
 };
 
 const userSignin1 = {

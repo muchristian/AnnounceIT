@@ -64,7 +64,7 @@ class Model {
     }
 
     async truncate(){
-        const query = `TRUNCATE TABLE ${this.table}`;
+        const query = `TRUNCATE TABLE ${this.table} RESTART IDENTITY CASCADE`;
         try{
             const res = await this.pool.query(query);
             return res;

@@ -14,12 +14,11 @@ const validateUser = user => {
         password: Joi.string()
         .min(4)
         .required(),
-        phoneNumber: Joi.string()
+        phone_number: Joi.string()
         .required(),
         address: Joi.string()
         .min(3)
-        .required(),
-        is_admin: Joi.boolean()
+        .required()
     });
     return schema.validate(user);
 };
