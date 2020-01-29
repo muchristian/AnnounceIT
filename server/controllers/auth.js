@@ -24,7 +24,7 @@ try{
     return res.status(201).send({
       status: 201,
       data:[{
-          token: await Utils.jwtSigner({id:newUser.rows[0].id, email:newUser.rows[0].email}),
+          token: Utils.jwtSigner({ id: newUser.rows[0].id, email: newUser.rows[0].email }),
           user: {
               first_name:newUser.rows[0].first_name,
               last_name:newUser.rows[0].last_name,
@@ -47,24 +47,26 @@ try{
 const loginUser = async (req, res) => {
     const {email, password} = req.body;
     try{
-        const user = await users.find(u => u.email == email);
-        if(!user){
-            throw 'user doesnt exist';
+      const signUser = await user.selectByColWhere('id, first_name, last_name, email, password, is_admin',
+      'email=$1',
+      [email]);
+        if(signUser.rowCount == 0){
+            throw 'user with those credentials doesnt exist';
         }
-         Utils.pwdCompare(password, user.password);
+         Utils.pwdCompare(password, signUser.rows[0].password);
         return res.status(200).json({
-            status: 'success',
+            status: 200,
             data: {
-                token: Utils.jwtSigner({ id:user.id, email:user.email, is_admin:user.is_admin }),
-                id: user.id,
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email
+                token: Utils.jwtSigner({ id: signUser.rows[0].id, email: signUser.rows[0].email, is_admin: signUser.rows[0].is_admin }),
+                id: signUser.rows[0].id,
+                first_name: signUser.rows[0].first_name,
+                last_name: signUser.rows[0].last_name,
+                email: signUser.rows[0].email
             }
         });
     } catch(error){
         return res.status(400).json({
-            status:'error',
+            status:400,
             error:error
             
         });
@@ -73,4 +75,4 @@ const loginUser = async (req, res) => {
 
 
 
-export { createUser };
+export { createUser, loginUser };

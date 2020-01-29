@@ -1,8 +1,9 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../index';
-import {userSignup1, userSignup2} from './testData';
+import {userSignup1, userSignup2, userSignin1, userSignin2} from './testData';
 import Model from '../models/index.dbquery';
+import Utils from '../helpers/utils'
 const user = new Model('users');
 
 chai.use(chaiHttp);
@@ -11,7 +12,14 @@ chai.should();
 describe('test signup', () => {
     before('it should truncate users table', async () =>{
 		try{
-			await user.truncate();
+            const pwd = 'admin123';
+        let hashPwd = Utils.hashPassword(pwd);
+        const truncate = await user.truncate();
+            if(truncate){
+                user.insert('first_name, last_name, email, password, phone_number, address, is_admin',
+                '$1, $2, $3, $4, $5, $6, $7',
+                ['chris', 'admin', 'admin@mail.com', `${hashPwd}`, '0786756493', 'kigali', true]);
+            }
 		}catch(err){
 			throw err;
 		}
@@ -50,6 +58,29 @@ describe('test signup', () => {
             });
         });
     });
+
+    describe('test signin', () => {
+        it('should return 200 if the authentication is passed', (done) => {
+        chai
+        .request(server)
+        .post('/api/v1/auth/signin')
+        .send(userSignin1)
+        .end((err, res) => {
+        res.should.have.status(200);
+        done();
+        });
+        });
+        it('should return 400 if the user doesnt exist', (done) => {
+            chai
+            .request(server)
+            .post('/api/v1/auth/signin')
+            .send(userSignin2)
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            });
+        })
+        });
     
 
     
