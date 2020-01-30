@@ -110,7 +110,7 @@ const updateAnnounceStatus = async (req, res) => {
     const {status} = req.body;
     const statusArr = ['pending', 'accepted', 'declined', 'active', 'deactivated'];
     try{
-        const checkStatus = await statusArr.find(s => s == status);
+        const checkStatus = statusArr.find(s => s == status);
         if(!checkStatus){
             return res.status(400).json({
                 status:400,
@@ -140,10 +140,11 @@ const updateAnnounceStatus = async (req, res) => {
     
 };
 
-const viewAllAnnounces = (req, res) => {
+const viewAllAnnounces = async (req, res) => {
+    const allAnnounces = await announce.selectAll();
     return res.status(200).json({
-        status:'success',
-        data: announces
+        status:200,
+        data: allAnnounces.rows
     });
 };
 
