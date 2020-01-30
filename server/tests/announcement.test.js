@@ -168,4 +168,15 @@ describe('test GET announcement', () => {
             done();
         });
     });
+
+    it('should return 200 if viewing specifically passed', done => {
+        chai
+        .request(server)
+        .get('/api/v2/announcement-id/' + 1)
+        .set('Authorization', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
 });

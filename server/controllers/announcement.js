@@ -71,22 +71,16 @@ const viewAnnouncementByState = async (req, res) => {
 };
  
 
-const  viewAnnouncementById = (req, res) => {
-    try{
-        const announce = announces.find(a => a.id == parseInt(req.params.id));
-        if(!announce){
-            throw 'the provided announcement id doesnt exist';
-        }
+const  viewAnnouncementById = async (req, res) => {
+        const viewSpecific = await announce.selectByColWhere(
+            '*',
+            'id=$1',
+            [req.params.id]);
+
         return res.status(200).json({
-            status:'success',
-            data:announce
-        })
-    }catch(error){
-        return res.status(400).json({
-            status:'error',
-            error:error
+            status:200,
+            data:viewSpecific.rows[0]
         });
-    }
 };
 
 const deleteAnnouncement = (req, res) => {
