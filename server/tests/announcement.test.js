@@ -157,4 +157,15 @@ describe('test GET announcement', () => {
             done();
         });
     });
+
+    it('should return announcement for specific state', done => {
+        chai
+        .request(server)
+        .get(`/api/v2/announcements-state/${1}?status=pending`)
+        .set('Authorization', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
 });
