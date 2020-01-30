@@ -411,7 +411,9 @@ th:first-child, td:first-child{
 
 
 /*homepage style start*/
-
+.wrap-all{
+    min-height:600px;
+}
 /* col1 and col-full style start */
 
     .col1{
