@@ -150,7 +150,7 @@ describe('test GET announcement', () => {
     it('should return 200 if all his/her announcement are outputed', (done) => {
         chai
         .request(server)
-        .get('/api/v2/announcements/' + 1)
+        .get('/api/v2/announcements/' + 1 + '/')
         .set('Authorization', userToken)
         .end((err, res) => {
             res.should.have.status(200);
@@ -161,7 +161,7 @@ describe('test GET announcement', () => {
     it('should return announcement for specific state', done => {
         chai
         .request(server)
-        .get(`/api/v2/announcements-state/${1}?status=pending`)
+        .get(`/api/v2/announcements/${1}?status=pending`)
         .set('Authorization', userToken)
         .end((err, res) => {
             res.should.have.status(200);
@@ -172,7 +172,7 @@ describe('test GET announcement', () => {
     it('should return 200 if viewing specifically passed', done => {
         chai
         .request(server)
-        .get('/api/v2/announcement-id/' + 1)
+        .get('/api/v2/announcement/' + 1)
         .set('Authorization', userToken)
         .end((err, res) => {
             res.should.have.status(200);

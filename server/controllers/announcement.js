@@ -63,7 +63,7 @@ const viewAnnouncementByState = async (req, res) => {
  const state = await announce.selectByColWhereAnd(
      '*',
      'owner=$1', 'status=$2',
-     [req.params.id, req.query.status]);
+     [req.params.owner, req.query.status]);
   return res.status(200).json({
       status:200,
       data:state.rows
