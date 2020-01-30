@@ -8,7 +8,7 @@
     "migrate": "babel-node --require dotenv/config ./server/models/table-migration.js",
     "seeder": "babel-node --require dotenv/config ./server/models/seeder.js",
     "test": "nyc mocha --require @babel/register --require dotenv/config ./server/tests/**/*.test.js  --timeout 25000 --exit ",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls", 
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon --exec babel-node --require dotenv/config ./server"
   },
   "engines": {
@@ -45,6 +45,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
+    "nodemailer": "^6.4.2",
     "nodemon": "^2.0.2",
     "pg": "^7.17.1",
     "swagger-ui-express": "^4.1.3"

@@ -1,11 +1,12 @@
 import Model from '../models/index.dbquery';
 import Utils from '../helpers/utils';
+import mail from '../helpers/mailer';
 const user = new Model('users');
 
 const createUser = async (req, res) => {
         const {first_name, last_name, email, password, phone_number, address} = req.body;
 try{
-    let passHash = await Utils.hashPassword(password);
+    let passHash = Utils.hashPassword(password);
     const mail = await user.selectByColWhere('email',
            'email=$1',
             [email]);
@@ -73,6 +74,48 @@ const loginUser = async (req, res) => {
     }
 }
 
+const resetPassword = async (req, res) => {
+  const {password, new_password} = req.body;
+  try{
+  const selByEmail = await user.selectByColWhere(
+    'password',
+    'email=$1',
+    [req.params.email]);
 
+    if(selByEmail.rowCount == 0){
+      throw 'user with that email does not exist';
+    }
+    
 
-export { createUser, loginUser };
+    const comparePwd = Utils.pwdCompare(password, selByEmail.rows[0].password);
+    if(!comparePwd){
+      let genPass = Math.floor(Math.random() * 900000) + 100000;
+      let genHash = Utils.hashPassword(`${genPass}`);
+      await user.update(
+        'password=$1',
+        'email=$2',
+        [genHash, req.params.email]);
+      mail(req.params.email, genPass);
+      return res.status(204).json({
+        status:204
+      });
+    }
+    let hashNew = Utils.hashPassword(new_password);
+     await user.update(
+      'password=$1',
+      'email=$2',
+      [hashNew, req.params.email]);
+      return res.status(200).json({
+        status: 200,
+        message: 'password updated successfully'
+      });
+    }catch(error){
+      return res.status(400).json({
+        status:400,
+        error:error
+      });
+    }
+
+}
+
+export { createUser, loginUser, resetPassword };
