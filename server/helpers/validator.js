@@ -23,7 +23,7 @@ const validateUser = user => {
     return schema.validate(user);
 };
 
-const validateAnnounce = announce => {
+const validateAnnounceText = announce => {
     const schema = Joi.object({
         text: Joi.string()
         .min(6)
@@ -33,6 +33,14 @@ const validateAnnounce = announce => {
     return schema.validate(announce);
 };
 
+const validateAnnounceStatus = announce => {
+    const schema = Joi.object({
+        status: Joi.string()
+        .required()
+    });
+    return schema.validate(announce);
+};
 
 
-export { validateUser, validateAnnounce };
+
+export { validateUser, validateAnnounceText, validateAnnounceStatus };

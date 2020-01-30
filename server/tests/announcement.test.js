@@ -193,6 +193,62 @@ describe('user admin announcement test', () => {
 			done();
 		});
     });
+    
+
+    it('should return 400 if status not provided', done => {
+        chai
+        .request(server)
+        .put('/api/v2/announcement/'+1+'/sold')
+        .send({
+            status:''
+        })
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+            res.should.have.status(400);
+            done();
+        });
+    });
+
+    it('should return 400 if provided status is invalid', done => {
+        chai
+        .request(server)
+        .put('/api/v2/announcement/'+1+'/sold')
+        .send({
+            status:'name'
+        })
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+            res.should.have.status(400);
+            done();
+        });
+    });
+
+    it('should return 200 if id provided to be updated as status match', done => {
+        chai
+        .request(server)
+        .put('/api/v2/announcement/'+1+'/sold')
+        .send({
+            status:'active'
+        })
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+    it('should return 400 if id provided to be updated as status doesnt match', done => {
+        chai
+        .request(server)
+        .put('/api/v2/announcement/'+0+'/sold')
+        .send({
+            status:'active'
+        })
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+            res.should.have.status(400);
+            done();
+        });
+    });
 
     it('should return 200 if id provided to be deleted pass', done => {
         chai
