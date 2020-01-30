@@ -1,9 +1,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../index';
-import {userSignup3, userSignin3, announceTest} from './testData';
-import Model from '../models/index.dbquery';
-const user = new Model('users');
+import {userSignup3, userSignin3, adminSignin, announceTest} from './testData';
+
 
 chai.use(chaiHttp);
 chai.should();
@@ -176,6 +175,43 @@ describe('test GET announcement', () => {
         .set('Authorization', userToken)
         .end((err, res) => {
             res.should.have.status(200);
+            done();
+        });
+    });
+});
+
+describe('user admin announcement test', () => {
+    let adminToken = '';
+	before('check if user auth token available', (done) => {
+		chai
+		.request(server)
+		.post('/api/v2/auth/signin')
+		.send(adminSignin)
+		.end((err, res) => {
+			adminToken = res.body.data.token;
+			res.should.have.status(200);
+			done();
+		});
+    });
+
+    it('should return 200 if id provided to be deleted pass', done => {
+        chai
+        .request(server)
+        .delete('/api/v2/announcement/' + 1)
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+
+    it('should return 400 if id provided to be deleted doesnt match', done => {
+        chai
+        .request(server)
+        .delete('/api/v2/announcement/' + 0)
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+            res.should.have.status(400);
             done();
         });
     });

@@ -47,13 +47,13 @@ const userSignin3 = {
     email:"userchris156@gmail.com",
     password:"chris32"
 }
-const userSignin4 = {
-    email:'markadmin23@gmail.com',
-    password:'admin23'
+const adminSignin = {
+    email:'admin@mail.com',
+    password:'admin123'
 }
 
 const announceTest = {
     text:'example when running an install in an automated test environment'
 }
 
-export {userSignup1, userSignup2, userSignup3, userSignup4, userSignin1, userSignin2, userSignin3, userSignin4, announceTest};
+export {userSignup1, userSignup2, userSignup3, userSignup4, userSignin1, userSignin2, userSignin3, adminSignin, announceTest};
