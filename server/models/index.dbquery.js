@@ -43,8 +43,8 @@ class Model {
         }
     }
 
-    async update(cols, selector, value){
-        const query = `UPDATE ${this.table} SET ${cols} WHERE ${selector} returning *`;
+    async updateAnd(cols, selector1, selector2, value){
+        const query = `UPDATE ${this.table} SET ${cols} WHERE ${selector1} AND ${selector2} returning *`;
         try{
             const res = await this.pool.query(query, value);
             return res;

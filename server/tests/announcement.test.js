@@ -89,3 +89,46 @@ describe('test create announcement', () => {
     });
 
 });
+
+describe('test announcement update', () => {
+    let userToken = '';
+	before('check if user auth token available', (done) => {
+		chai
+		.request(server)
+		.post('/api/v2/auth/signin')
+		.send(userSignin3)
+		.end((err, res) => {
+			userToken = res.body.data.token;
+			res.should.have.status(200);
+			done();
+		});
+    });
+
+    it('should return 200 if update announcement pass', function(done) {
+        chai
+        .request(server)
+        .put('/api/v2/announcement/' + 1)
+        .send({
+                text: 'announcement new update'
+           })
+        .set('Authorization', userToken)
+        .end(function(err, res) {
+            res.should.have.status(200);
+            done();
+            });
+    });
+
+    it('should return 400 if announcement id does not match with the authenticated user', function(done) {
+        chai
+        .request(server)
+        .put('/api/v2/announcement/' + 0)
+        .send({
+                text: 'announcement new update'
+           })
+        .set('Authorization', userToken)
+        .end(function(err, res) {
+            res.should.have.status(400);
+            done();
+            });
+    });
+});

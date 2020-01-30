@@ -21,25 +21,26 @@ const createAnnounce = async (req, res) => {
 };
 
 
-const updateAnnounce = (req, res) => {
+const updateAnnounce = async (req, res) => {
+    const {text} = req.body;
     try{
-        const announce = announces.find(a => a.id == parseInt(req.params.id));
-        if(!announce){
-            throw 'the announcement u want to update doesnt exist';
+        const upAnnounce = await announce.updateAnd('text=$1', 
+        'id=$2', 'owner=$3', 
+        [text, req.params.id, req.token.id]);
+        if(upAnnounce.rowCount == 0){
+            throw 'the announcement you want to update does not exist for that user';
         }
-        announce.text = req.body.text;
-        announce.end_date = new Date();
         return res.status(200).json({
-            status:'success',
+            status:200,
             data: {
-                id: announce.id,
-                text: announce.text,
-                end_date:announce.end_date
+                id:upAnnounce.rows[0].id,
+                owner:upAnnounce.rows[0].owner,
+                text:upAnnounce.rows[0].text
             }
         });
     } catch(error) {
         return res.status(400).json({
-            status:'error',
+            status:400,
             error:error
         });
     };
