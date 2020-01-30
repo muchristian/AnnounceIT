@@ -59,19 +59,16 @@ const viewAllAnnouncebyOwner = async (req, res) => {
         });
 };
 
-const viewAnnouncementByState = (req, res) => {
- const owners = announces.filter(a => a.owner == parseInt(req.params.id));
- let arr =[];
-  for(let key in owners){
-      if(owners[key].status == req.query.status){
-          arr.push(owners[key]);
-      }
-  }
+const viewAnnouncementByState = async (req, res) => {
+ const state = await announce.selectByColWhereAnd(
+     '*',
+     'owner=$1', 'status=$2',
+     [req.params.id, req.query.status]);
   return res.status(200).json({
-      status:'success',
-      data:arr
+      status:200,
+      data:state.rows
   });
-}
+};
  
 
 const  viewAnnouncementById = (req, res) => {

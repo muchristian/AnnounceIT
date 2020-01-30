@@ -43,6 +43,16 @@ class Model {
         }
     }
 
+    async selectByColWhereAnd(cols, selector1, selector2, value){
+        const query = `SELECT ${cols} FROM ${this.table} WHERE ${selector1} AND ${selector2}`;
+        try{
+            const res = await this.pool.query(query, value);
+            return res;
+        }catch(err){
+            throw err;
+        }
+    }
+
     async updateAnd(cols, selector1, selector2, value){
         const query = `UPDATE ${this.table} SET ${cols} WHERE ${selector1} AND ${selector2} returning *`;
         try{
