@@ -1,7 +1,7 @@
-import { validateUser, validateAnnounce } from '../helpers/validator';
+import { validateUser, validateAnnounceText, validateAnnounceStatus } from '../helpers/validator';
 
-const validateSignup = async (req, res, next) => {
-        const {error} = await validateUser(req.body);
+const validateSignup = (req, res, next) => {
+        const {error} = validateUser(req.body);
         if(error){
             return res.status(400).json({
                 status:400,
@@ -11,8 +11,8 @@ const validateSignup = async (req, res, next) => {
             return next();
 };
 
-const validateAnnounces = async (req, res, next) => {
-    const {error} = await validateAnnounce(req.body);
+const validateAnnouncesText = (req, res, next) => {
+    const {error} = validateAnnounceText(req.body);
         if(error){
             return res.status(400).json({
                 status:400,
@@ -22,4 +22,15 @@ const validateAnnounces = async (req, res, next) => {
             return next();
 };
 
-export {validateSignup, validateAnnounces};
+const validateAnnouncesStatus = (req, res, next) => {
+    const {error} = validateAnnounceStatus(req.body);
+        if(error){
+            return res.status(400).json({
+                status:400,
+                error: error.details[0].message
+                });
+        }
+            return next();
+};
+
+export {validateSignup, validateAnnouncesText, validateAnnouncesStatus};

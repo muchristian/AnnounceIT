@@ -106,25 +106,34 @@ const deleteAnnouncement = async (req, res) => {
     }
 }
 
-const updateAnnounceStatus = (req, res) => {
+const updateAnnounceStatus = async (req, res) => {
+    const {status} = req.body;
+    const statusArr = ['pending', 'accepted', 'declined', 'active', 'deactivated'];
     try{
-        const announce = announces.find(a => a.id == parseInt(req.params.id));
-        if(!announce){
-            throw 'the announcement u want to update doesnt exist';
+        const checkStatus = await statusArr.find(s => s == status);
+        if(!checkStatus){
+            return res.status(400).json({
+                status:400,
+                error:'status with that name not valid'
+            });
         }
-        announce.status = req.body.status;
-        announce.end_date = new Date();
+        const updateStatus = await announce.update(
+            'status=$1',
+            'id=$2',
+            [status, req.params.id]);
+        if(updateStatus.rowCount == 0){
+            throw 'the announcement u want to update its status, doesnt match';
+        }
         return res.status(200).json({
-            status:'success',
+            status:200,
             data: {
-                id: announce.id,
-                text: announce.status,
-                end_date:announce.end_date
+                id: updateStatus.rows[0].id,
+                text: updateStatus.rows[0].status
             }
         });
     } catch(error) {
         return res.status(400).json({
-            status:'error',
+            status:400,
             error:error
         });
     };
