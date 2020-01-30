@@ -413,14 +413,12 @@ th:first-child, td:first-child{
 /*homepage style start*/
 
 /* col1 and col-full style start */
-@media screen and (min-width:1052px){
+
     .col1{
-    flex: 1 2 70%;
+    width: 100%;
 }
     .col2{
-    flex: 2 0 30%;
-    box-shadow: 1px 0 2px #f1f1f1;
-}
+    width: 100%;
 }
 
 .profile-div{
@@ -600,14 +598,7 @@ font-size: 12px;
 
 /* col2 style end */
 
-@media screen and (max-width:1052px){
-    .col1{
-        width:100%;
-    }
-    .col2{
-        width: 100%;
-    }
-}
+
 /*homepage style end */
 /* col-full style start*/
 .col-full {
