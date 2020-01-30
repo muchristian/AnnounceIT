@@ -83,22 +83,24 @@ const  viewAnnouncementById = async (req, res) => {
         });
 };
 
-const deleteAnnouncement = (req, res) => {
+const deleteAnnouncement = async (req, res) => {
     try{
-        const announce = announces.find(a => a.id == parseInt(req.params.id));
-        if(!announce){
+        const delAnnounce = await announce.delete(
+            'id=$1',
+            [req.params.id]);
+        if(delAnnounce.rowCount == 0){
             throw 'the provided announcement id doesnt exist';
         }
-        const index = announces.indexOf(announce);
-    announces.splice(index, 1);
         return res.status(200).json({
-            status:'success',
-            data:announce
-        })
+            status:200,
+            data:{
+                message:"delete successfully"
+            }
+        });
         
     }catch(error){
         return res.status(400).json({
-            status:'error',
+            status:400,
             error:error
         });
     }
