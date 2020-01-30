@@ -132,3 +132,29 @@ describe('test announcement update', () => {
             });
     });
 });
+
+describe('test GET announcement', () => {
+    let userToken = '';
+	before('check if user auth token available', (done) => {
+		chai
+		.request(server)
+		.post('/api/v2/auth/signin')
+		.send(userSignin3)
+		.end((err, res) => {
+			userToken = res.body.data.token;
+			res.should.have.status(200);
+			done();
+		});
+    });
+
+    it('should return 200 if all his/her announcement are outputed', (done) => {
+        chai
+        .request(server)
+        .get('/api/v2/announcements/' + 1)
+        .set('Authorization', userToken)
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+});
