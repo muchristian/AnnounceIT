@@ -7,5 +7,6 @@ const route = Router();
 
 route.post(`/announcement`, [userVerify, validateAnnounces], createAnnounce);
 route.put(`/announcement/:id`, [userVerify, validateAnnounces], updateAnnounce);
+route.get(`/announcements/:owner`, userVerify, viewAllAnnouncebyOwner);
 
 export default route;

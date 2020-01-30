@@ -47,26 +47,16 @@ const updateAnnounce = async (req, res) => {
     
 };
 
-const viewAllAnnouncebyOwner = (req, res) => {
-    try{
-        const announce = announces.filter(a => a.owner == parseInt(req.params.owner));
-
-        const checkOwner = announces.find(a => a.owner == parseInt(req.params.owner));
-        if(!checkOwner){
-            throw 'the user with that id doesnt exist';
-        }
+const viewAllAnnouncebyOwner = async (req, res) => {
+        const ownerQuery = await announce.selectByColWhere(
+            '*',
+            'owner=$1',
+            [req.params.owner]);
 
         return res.status(200).json({
-            status:'success',
-            data:announce
+            status:200,
+            data:ownerQuery.rows
         });
-
-    } catch(error){
-        return res.status(400).json({
-            status:'error',
-            error:error
-        });
-    }
 };
 
 const viewAnnouncementByState = (req, res) => {
