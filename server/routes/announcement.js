@@ -12,4 +12,5 @@ route.get(`/announcements/:owner`, userVerify, viewAnnouncementByState);
 route.get(`/announcement/:id`, userVerify, viewAnnouncementById);
 route.delete(`/announcement/:id`, [userVerify, isadminVerify], deleteAnnouncement);
 route.put(`/announcement/:id/sold`, [userVerify, isadminVerify, validateAnnouncesStatus], updateAnnounceStatus);
+route.get(`/announcements`, [userVerify, isadminVerify], viewAllAnnounces);
 export default route;

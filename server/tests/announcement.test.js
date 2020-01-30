@@ -178,6 +178,17 @@ describe('test GET announcement', () => {
             done();
         });
     });
+
+    it('should return 401 if the token provided does not match as for admin', done => {
+        chai
+        .request(server)
+        .get('/api/v2/announcements')
+        .set('Authorization', userToken)
+        .end((err, res) => {
+            res.should.have.status(401);
+            done();
+        });
+    });
 });
 
 describe('user admin announcement test', () => {
@@ -246,6 +257,17 @@ describe('user admin announcement test', () => {
         .set('Authorization', adminToken)
         .end((err, res) => {
             res.should.have.status(400);
+            done();
+        });
+    });
+
+    it('should return 200 if returning all announcement from user', done => {
+        chai
+        .request(server)
+        .get('/api/v2/announcements')
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+            res.should.have.status(200);
             done();
         });
     });
