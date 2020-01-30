@@ -13,12 +13,17 @@ describe('test signup', () => {
     before('it should truncate users table', async () =>{
 		try{
             const pwd = 'admin123';
+            const pwd1 = 'chris32';
         let hashPwd = Utils.hashPassword(pwd);
+        let hashPwd1 = Utils.hashPassword(pwd1);
         const truncate = await user.truncate();
             if(truncate){
                 user.insert('first_name, last_name, email, password, phone_number, address, is_admin',
                 '$1, $2, $3, $4, $5, $6, $7',
                 ['chris', 'admin', 'admin@mail.com', `${hashPwd}`, '0786756493', 'kigali', true]);
+                user.insert('first_name, last_name, email, password, phone_number, address, is_admin',
+                '$1, $2, $3, $4, $5, $6, $7',
+                ['mucyo', 'chris', 'mucyochristian2@gmail.com', `${hashPwd1}`, '0786756493', 'kigali', false]);
             }
 		}catch(err){
 			throw err;
@@ -81,6 +86,55 @@ describe('test signup', () => {
             });
         })
         });
+
+    describe('test reset password', () => {
+        let testMail = '';
+        it('should return 400 if the email provided does not exist', (done) => {
+             testMail = 'a@gmail.com';
+            chai
+            .request(server)
+            .post(`/api/v2/auth/${testMail}/reset_password`)
+            .send({
+                password: 'wrong',
+                new_password: 'newpassword'
+            })
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            });
+        });
+
+        it('should return 200 if the password provided is wrong', (done) => {
+            testMail = 'mucyochristian2@gmail.com';
+           chai
+           .request(server)
+           .post(`/api/v2/auth/${testMail}/reset_password`)
+           .send({
+               password: 'chris32',
+               new_password: 'newpassword'
+           })
+           .end((err, res) => {
+               res.should.have.status(200);
+               done();
+           });
+       });
+        it('should return 204 if the password provided is wrong', (done) => {
+            testMail = 'mucyochristian2@gmail.com';
+           chai
+           .request(server)
+           .post(`/api/v2/auth/${testMail}/reset_password`)
+           .send({
+               password: 'wrong',
+               new_password: 'newpassword'
+           })
+           .end((err, res) => {
+               res.should.have.status(204);
+               done();
+           });
+       });
+
+       
+    });
     
 
     
